@@ -29,6 +29,7 @@ public class Ventana extends javax.swing.JFrame {
     private void initComponents() {
 
         Pannel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -39,6 +40,10 @@ public class Ventana extends javax.swing.JFrame {
 
         Pannel.setBackground(new java.awt.Color(0, 0, 0));
         Pannel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("LEER TXT");
+        Pannel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+
         getContentPane().add(Pannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 540));
 
         Parent.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,6 +105,7 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Pannel;
     private javax.swing.JPanel Parent;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -74,7 +74,7 @@ public class List<T> {
                 
                 if (pointer.getData().getTitle() == node.getData().getTitle()){
                     repetidos = true;
-                    JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen");
+                    JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen ^_^ ");
                 }
                 
                 pointer = pointer.getNext();}
