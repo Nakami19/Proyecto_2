@@ -4,6 +4,8 @@
  */
 package Interfaces;
 import EDD.HashTable;
+import EDD.List;
+import EDD.Nodo;
 
 /**
  *
@@ -12,6 +14,15 @@ import EDD.HashTable;
 public class Global {
     //Parámetros de la clase Global
     private static HashTable hashtable = new HashTable();
+    private static List<Nodo<String>> listaTitulos = new List();
+
+    public static List<Nodo<String>> getListaTitulos() {
+        return listaTitulos;
+    }
+
+    public static void setListaTitulos(List<Nodo<String>> listaTitulos) {
+        Global.listaTitulos = listaTitulos;
+    }
 
     public static HashTable getHashtable() {
         return hashtable;
@@ -23,3 +34,4 @@ public class Global {
     
 
 }
+
