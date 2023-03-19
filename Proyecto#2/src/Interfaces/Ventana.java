@@ -39,10 +39,34 @@ public class Ventana extends javax.swing.JFrame {
 
         Pannel = new javax.swing.JPanel();
         LeerTXT = new javax.swing.JButton();
+        Cerrar = new javax.swing.JButton();
+        Analizar = new javax.swing.JButton();
+        BuscarAutor = new javax.swing.JButton();
+        BuscarClave = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        main = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        Analize = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        Search_Author = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        Search_Key = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -50,32 +74,178 @@ public class Ventana extends javax.swing.JFrame {
         Pannel.setBackground(new java.awt.Color(0, 0, 0));
         Pannel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        LeerTXT.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
         LeerTXT.setText("LEER TXT");
+        LeerTXT.setPreferredSize(new java.awt.Dimension(80, 25));
         LeerTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LeerTXTActionPerformed(evt);
             }
         });
-        Pannel.add(LeerTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 100, -1));
+        Pannel.add(LeerTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, -1));
 
-        getContentPane().add(Pannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 540));
+        Cerrar.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
+        Cerrar.setText("CERRAR");
+        Cerrar.setMaximumSize(new java.awt.Dimension(84, 22));
+        Cerrar.setMinimumSize(new java.awt.Dimension(84, 22));
+        Cerrar.setPreferredSize(new java.awt.Dimension(80, 25));
+        Pannel.add(Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 130, -1));
+
+        Analizar.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
+        Analizar.setText("ANALIZAR");
+        Analizar.setPreferredSize(new java.awt.Dimension(80, 25));
+        Analizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnalizarActionPerformed(evt);
+            }
+        });
+        Pannel.add(Analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
+
+        BuscarAutor.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
+        BuscarAutor.setText("BUSCAR AUTOR");
+        BuscarAutor.setPreferredSize(new java.awt.Dimension(80, 25));
+        BuscarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarAutorActionPerformed(evt);
+            }
+        });
+        Pannel.add(BuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 130, -1));
+
+        BuscarClave.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
+        BuscarClave.setText("BUSCAR CLAVES");
+        BuscarClave.setPreferredSize(new java.awt.Dimension(80, 25));
+        BuscarClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarClaveActionPerformed(evt);
+            }
+        });
+        Pannel.add(BuscarClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 130, -1));
+
+        getContentPane().add(Pannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 540));
 
         Parent.setBackground(new java.awt.Color(255, 255, 255));
         Parent.setLayout(new java.awt.CardLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Parent.add(jPanel1, "card2");
+        main.setBackground(new java.awt.Color(255, 255, 255));
+        main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Parent.add(jPanel2, "card3");
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("MetroMendeley");
+        main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Parent.add(jPanel3, "card4");
+        jLabel2.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("una gran variedad de resúmenes acerca de artículos científicos.");
+        main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 620, 540));
+        jLabel3.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("terminará su ejecución.");
+        main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setText("Bienvenido a la base de Datos de MetroMendeley, aquí encontrarás");
+        main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setText("Con el botón de Leer TXT podrás cargar resúmenes a la base de datos");
+        main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setText("En la sección de Analizar resúmenes podrás observar la lista de ");
+        main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("resúmenes en la base de datos, y serás capaz de seleccionar uno");
+        main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("para poder analizarlo.");
+        main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("En la sección de búsqueda por autor, podrás buscar todos los ");
+        main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("resúmenes creados por el autor que usted introduzca, y será capaz");
+        main.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("de ver los detalles de ese resúmen.");
+        main.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setText("En la sección de búsqueda por palabra clave, podrás buscar todos los");
+        main.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setText("resúmenes que contengan la palabra clave que usted introduzca");
+        main.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel14.setText("y será capaz de ver los detalles de ese resúmen.");
+        main.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel15.setText("Finalmente en el botón de salir del sistema, se guardarán todos los");
+        main.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Swis721 BT", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel16.setText("datos que se hayan introducido a la base de datos, y el programa");
+        main.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+
+        Parent.add(main, "card2");
+
+        Analize.setBackground(new java.awt.Color(255, 255, 255));
+        Analize.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel17.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Analizar Resúmenes");
+        Analize.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+
+        Parent.add(Analize, "card3");
+
+        Search_Author.setBackground(new java.awt.Color(255, 255, 255));
+        Search_Author.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel18.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Búsqueda por Autor");
+        Search_Author.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+
+        Parent.add(Search_Author, "card4");
+
+        Search_Key.setBackground(new java.awt.Color(255, 255, 255));
+        Search_Key.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel19.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Búsqueda por palabra clave");
+        Search_Key.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+
+        Parent.add(Search_Key, "card5");
+
+        getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 610, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -217,6 +387,27 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LeerTXTActionPerformed
 
+    private void BuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarAutorActionPerformed
+        Parent.removeAll();
+        Parent.add(Search_Author);
+        Parent.repaint();
+        Parent.revalidate();
+    }//GEN-LAST:event_BuscarAutorActionPerformed
+
+    private void AnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarActionPerformed
+        Parent.removeAll();
+        Parent.add(Analize);
+        Parent.repaint();
+        Parent.revalidate();
+    }//GEN-LAST:event_AnalizarActionPerformed
+
+    private void BuscarClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClaveActionPerformed
+        Parent.removeAll();
+        Parent.add(Search_Key);
+        Parent.repaint();
+        Parent.revalidate();
+    }//GEN-LAST:event_BuscarClaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,11 +445,35 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Analizar;
+    private javax.swing.JPanel Analize;
+    private javax.swing.JButton BuscarAutor;
+    private javax.swing.JButton BuscarClave;
+    private javax.swing.JButton Cerrar;
     private javax.swing.JButton LeerTXT;
     private javax.swing.JPanel Pannel;
     private javax.swing.JPanel Parent;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel Search_Author;
+    private javax.swing.JPanel Search_Key;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }
