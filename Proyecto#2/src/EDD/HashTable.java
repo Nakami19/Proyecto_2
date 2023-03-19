@@ -35,6 +35,7 @@ public class HashTable {
         return repetidos;
     }
     
+    
     public List[] getTable() {
         return table;
     }
