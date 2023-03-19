@@ -34,6 +34,7 @@ public class HashTable {
         this.table[hash].insertFinal_Resumenes(data);
     }
     
+    
     public List[] getTable() {
         return table;
     }
