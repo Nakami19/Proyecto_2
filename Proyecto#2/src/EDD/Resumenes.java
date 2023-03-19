@@ -81,34 +81,17 @@ public class Resumenes {
         String resumen = "";
         int i = 1;        
         resumen += getTitle() + "\n"
-                + "Autores: "+"\n" + getAuthors() + "\n";
+                + "Autores: " + getAuthors() + "\n";
         
-        String[] words = getKeywords().split(",");
+        String[] words = getKeywords().toLowerCase().split("\n");
         for(int index = 0; index < words.length; index++){
-            words[index]=words[index].replaceAll("\\p{Punct}", "");
-         
-            resumen += "Palabra clave: " + words[index].trim() + ", " + " Frecuencia en el texto: "+ Integer.toString(wordAmmount(words[index].trim())) + "\n"; 
+            resumen += "Palabra clave: " + words[index] + ": " + " Frecuencia en el texto: "+ Integer.toString(wordAmmount(words[index])) + "\n"; 
         }
-        /*for(Nodo<String> nodo = getKeywords().getHead(); nodo != null;){
-            resumen += "Palabra clave " + Integer.toString(i) + ": " + nodo.getData() +" Frecuencia en el texto: "+ Integer.toString(wordAmmount(nodo.getData()));
-            i++;
-        }*/
-        return resumen.trim();
+        return resumen;
     }
     
-     public int wordAmmount(String word){
-       
-        int wordCount = 0;
-        
-        String text = getContent();
-        String[] words = text.replaceAll("\\p{Punct}", "").split(" ");
-
-        for(int i=0; i < words.length; i++){
-            System.out.println(words[i]);
-            if(words[i].equals(word)){
-                wordCount++;
-            }
-        }
-        return wordCount;
+    public int wordAmmount(String word){
+        String text = getContent().toLowerCase();
+        return text.split(word).length -1;
     }
 }
