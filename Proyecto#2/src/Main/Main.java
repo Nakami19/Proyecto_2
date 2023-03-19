@@ -23,18 +23,17 @@ public class Main {
         Ventana ventana = new Ventana();
         ventana.setVisible(true);
         
-        List <Nodo<Resumenes>> alista = new List<>();
-        List <Nodo<Resumenes>> blista = new List<>();
 
         Resumenes aresumen = new Resumenes("a","a","si se pudo","a");
-        Resumenes bresumen = new Resumenes("b","a","b","a");
-        
-        alista.insertFinal_Resumenes(aresumen);
-        blista.insertFinal_Resumenes(bresumen);
+        Resumenes bresumen = new Resumenes("b","a","aleluya","a");
+        Resumenes cresumen = new Resumenes("a","d","si se pudo","a");
         
         HashTable prueba1 = new HashTable();
-        prueba1.Insert(prueba1.Hash("a"),aresumen);
-        System.out.println(prueba1.Search_Title(prueba1.Hash("a"), "a").getData().getContent());
+        prueba1.Insert(12,aresumen);
+        prueba1.Insert(12,bresumen);
+        
+        
+        System.out.println(prueba1.Search_Title(12, "b").getData().getContent());
         
     }
     

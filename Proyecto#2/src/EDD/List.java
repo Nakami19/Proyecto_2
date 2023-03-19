@@ -62,44 +62,31 @@ public class List<T> {
     }
     
     public void insertFinal_Resumenes(Resumenes data){
-        boolean repetidos = false;
         Nodo<Resumenes> node = new Nodo<Resumenes>(data);
         if (isEmpty()) {
             setFirst(node);
             setLast(node);
+            size++;
         } else {
+            boolean repetidos = false;
             Nodo<Resumenes> pointer = getFirst();
-            while (pointer.getNext() != null) {
+            while (pointer != null) {
                 
                 if (pointer.getData().getTitle() == node.getData().getTitle()){
-                repetidos = true;
-                JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen");
+                    repetidos = true;
+                    JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen");
                 }
                 
                 pointer = pointer.getNext();}
             
-            if (repetidos = false){
-            pointer.setNext(node);
-            setLast(pointer);}
+            if (repetidos == false){
+                pointer=getLast();
+                pointer.setNext(node);
+                setLast(node);
+                size++;
+            }
         }
-        size++;
-    }
-    
-    public void insertFinal_String(T data){
-        Nodo node = new Nodo(data);
-        if (isEmpty()) {
-            setFirst(node);
-            setLast(node);
-            
-        } else {
-            Nodo pointer = getFirst();
-            while (pointer.getNext() != null) {
-                pointer = pointer.getNext();}
-            
-            pointer.setNext(node);
-            setLast(pointer);}
         
-        size++;
     }
     
     public Nodo<Resumenes> Search_Title (String title){
@@ -107,6 +94,7 @@ public class List<T> {
         Nodo<Resumenes> nodo = null;
         while (pointer != null){
             if (pointer.getData().getTitle() == title){
+                
                 nodo = pointer;
                 break;
             }
