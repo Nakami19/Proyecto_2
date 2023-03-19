@@ -4,31 +4,43 @@
  */
 package EDD;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Tomas
  */
 public class List<T> {
-    private Nodo<T> head;
+    private Nodo first;
+    private Nodo last;
     private int size;
     
     public List(){
-        this.head = null;
+        this.first = null;
+        this.last = null;
         this.size = 0;
     }
 
     /**
      * @return the head
      */
-    public Nodo<T> getHead() {
-        return head;
+    public Nodo getFirst() {
+        return first;
     }
 
+    public Nodo getLast() {
+        return last;
+    }
+
+    public void setLast(Nodo last) {
+        this.last = last;
+    }
+    
     /**
      * @param head the head to set
      */
-    public void setHead(Nodo<T> head) {
-        this.head = head;
+    public void setFirst(Nodo first) {
+        this.first = first;
     }
 
     /**
@@ -46,26 +58,76 @@ public class List<T> {
     }
     
     public boolean isEmpty(){
-        return getHead() == null;
+        return getFirst() == null;
     }
     
-    public Nodo<T> insertEnd(T data){
-        Nodo<T> node = new Nodo<T>(data);
+    public void insertFinal_Resumenes(Resumenes data){
+        boolean repetidos = false;
+        Nodo<Resumenes> node = new Nodo<Resumenes>(data);
         if (isEmpty()) {
-            setHead(node);
+            setFirst(node);
+            setLast(node);
         } else {
-            Nodo pointer = getHead();
+            Nodo<Resumenes> pointer = getFirst();
             while (pointer.getNext() != null) {
-                pointer = pointer.getNext();
-            }
+                
+                if (pointer.getData().getTitle() == node.getData().getTitle()){
+                repetidos = true;
+                JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen");
+                }
+                
+                pointer = pointer.getNext();}
+            
+            if (repetidos = false){
             pointer.setNext(node);
+            setLast(pointer);}
         }
         size++;
-        return node;
+    }
+    
+    public void insertFinal_String(T data){
+        Nodo node = new Nodo(data);
+        if (isEmpty()) {
+            setFirst(node);
+            setLast(node);
+            
+        } else {
+            Nodo pointer = getFirst();
+            while (pointer.getNext() != null) {
+                pointer = pointer.getNext();}
+            
+            pointer.setNext(node);
+            setLast(pointer);}
+        
+        size++;
+    }
+    
+    public Nodo<Resumenes> Search_Title (String title){
+        Nodo<Resumenes> pointer = getFirst();
+        Nodo<Resumenes> nodo = null;
+        while (pointer != null){
+            if (pointer.getData().getTitle() == title){
+                nodo = pointer;
+                break;
+            }
+            pointer = pointer.getNext();
+        }
+
+        return nodo;
+        
+    }
+    
+    public void Imprimir(){
+        Nodo<Resumenes> pointer = getFirst();
+        while (pointer!=null){
+            System.out.println(pointer.getData().getTitle());
+            pointer = pointer.getNext();
+        }
     }
         
-    public String showResumes(List<Resumenes> resumenes, String texto){
-        for(Nodo<Resumenes> node = resumenes.getHead(); node != null; node = node.getNext()){
+        
+    public String showResumes(List<Nodo<Resumenes>> resumenes, String texto){
+        for(Nodo<Resumenes> node = resumenes.getFirst(); node != null; node = node.getNext()){
             texto += node.getData().print();
             texto += "\n";
         }
