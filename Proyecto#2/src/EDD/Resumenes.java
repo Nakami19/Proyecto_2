@@ -10,11 +10,11 @@ package EDD;
  */
 public class Resumenes {
     private String title;
-    private List<String> authors;
+    private String authors;
     private String content;
-    private List<String> keywords;
+    private String keywords;
 
-    public Resumenes(String title, List<String> authors, String content, List<String> keywords) {
+    public Resumenes(String title, String authors, String content, String keywords) {
         this.title = title;
         this.authors = authors;
         this.content = content;
@@ -38,14 +38,14 @@ public class Resumenes {
     /**
      * @return the authors
      */
-    public List<String> getAuthors() {
+    public String getAuthors() {
         return authors;
     }
 
     /**
      * @param authors the authors to set
      */
-    public void setAuthors(List<String> authors) {
+    public void setAuthors(String authors) {
         this.authors = authors;
     }
 
@@ -66,16 +66,45 @@ public class Resumenes {
     /**
      * @return the keywords
      */
-    public List<String> getKeywords() {
+    public String getKeywords() {
         return keywords;
     }
 
     /**
      * @param keywords the keywords to set
      */
-    public void setKeywords(List<String> keywords) {
+    public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
     
+    public String print(){
+        String resumen = "";
+        int i = 1;        
+        resumen += getTitle() + "\n"
+                + "Autores: " + getAuthors() + "\n";
+        
+        String[] words = getKeywords().split("\n");
+        for(int index = 0; index < words.length; index++){
+            resumen += "Palabra clave: " + words[index] + ": " + " Frecuencia en el texto: "+ Integer.toString(wordAmmount(words[index])) + "\n"; 
+        }
+        /*for(Nodo<String> nodo = getKeywords().getHead(); nodo != null;){
+            resumen += "Palabra clave " + Integer.toString(i) + ": " + nodo.getData() +" Frecuencia en el texto: "+ Integer.toString(wordAmmount(nodo.getData()));
+            i++;
+        }*/
+        return resumen;
+    }
     
+    public int wordAmmount(String word){
+        int wordCount = 0;
+        
+        String text = getContent();
+        String[] words = text.replaceAll("\\p{Punct}", "").split(" ");
+
+        for(int i=0; i < words.length; i++){
+            if(words[i].equals(word)){
+                wordCount++;
+            }
+        }
+        return wordCount;
+    }
 }

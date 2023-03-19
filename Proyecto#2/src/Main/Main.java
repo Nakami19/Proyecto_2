@@ -25,12 +25,9 @@ public class Main {
         
         List <Nodo<Resumenes>> alista = new List<>();
         List <Nodo<Resumenes>> blista = new List<>();
-        List <String> astr = new List<String>();
-        List <String> bstr = new List<String>();
-        astr.insertFinal_String("a");
-        bstr.insertFinal_String("b");
-        Resumenes aresumen = new Resumenes("a",astr,"si se pudo",astr);
-        Resumenes bresumen = new Resumenes("b",bstr,"b",bstr);
+
+        Resumenes aresumen = new Resumenes("a","a","si se pudo","a");
+        Resumenes bresumen = new Resumenes("b","a","b","a");
         
         alista.insertFinal_Resumenes(aresumen);
         blista.insertFinal_Resumenes(bresumen);

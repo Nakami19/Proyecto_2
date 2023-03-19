@@ -124,4 +124,12 @@ public class List<T> {
         }
     }
         
+        
+    public String showResumes(List<Nodo<Resumenes>> resumenes, String texto){
+        for(Nodo<Resumenes> node = resumenes.getFirst(); node != null; node = node.getNext()){
+            texto += node.getData().print();
+            texto += "\n";
+        }
+        return texto;
+    }
 }
