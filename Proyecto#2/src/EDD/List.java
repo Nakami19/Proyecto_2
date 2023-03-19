@@ -78,7 +78,7 @@ public class List<T> {
                     repetidos = true;
 
                     JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen ^_^ ");
-                    return true;
+                    return repetidos;
                 }
                 
                 pointer = pointer.getNext();}
