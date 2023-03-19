@@ -91,16 +91,63 @@ public class List<T> {
             } 
         }
         return repetidos;
+    }
+    
+    public void insertFinal_String(String data){
+        Nodo<String> node = new Nodo<String>(data);
+        if (isEmpty()) {
+            setFirst(node);
+            setLast(node);
+            size++;
+        } else {
+            boolean repetidos = false;
+            Nodo<String> pointer = getFirst();
+            while (pointer != null) {
+                
+                if (pointer.getData().equalsIgnoreCase(node.getData())){
+                    repetidos = true;
+                }
+                
+                pointer = pointer.getNext();}
+            
+            if (repetidos == false){
+                pointer=getLast();
+                pointer.setNext(node);
+                setLast(node);
+                size++;
+            } 
+        }
+        
     }   
     
-    public void Ordenar_Lista(){
+    public Nodo<Resumenes> searchTitle(String titulo){
+        
         Nodo<Resumenes> aux = getFirst();
-        Nodo<Resumenes> index;
-        Resumenes temp;
+        Nodo<Resumenes> nodo = null;
+            if (getSize() == 1){
+                nodo = aux;
+            }else{
+            while (aux != null){
+                if(aux.getData().getTitle().equalsIgnoreCase(titulo)){
+                    nodo = aux;
+                }
+                aux = aux.getNext();
+            }}
+        
+        return nodo;
+    }
+    
+    public void Ordenar_Lista(){
+        Nodo<String> aux = getFirst();
+        Nodo<String> index;
+        String temp;
+        if (isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error!! La lista se encuentra vacia");
+        } else{
             while (aux != null){
                 index = aux.getNext();
                 while (index!=null){
-                    if(aux.getData().getTitle().toLowerCase().compareTo(index.getData().getTitle().toLowerCase()) > index.getData().getTitle().toLowerCase().compareTo(aux.getData().getTitle().toLowerCase())){
+                    if(aux.getData().toLowerCase().compareTo(index.getData().toLowerCase()) > index.getData().toLowerCase().compareTo(aux.getData().toLowerCase())){
                         temp = aux.getData();
                         aux.setData(index.getData());
                         index.setData(temp);
@@ -110,6 +157,7 @@ public class List<T> {
                 aux = aux.getNext();
             }
         }
+    }
     
     public String showResumes(List<Nodo<Resumenes>> resumenes, String texto){
         for(Nodo<Resumenes> node = resumenes.getFirst(); node != null; node = node.getNext()){

@@ -34,7 +34,11 @@ public class HashTable {
         boolean repetidos=this.table[hash].insertFinal_Resumenes(data);
         return repetidos;
     }
-    
+
+    public Nodo<Resumenes> SearchTitle(int hash, String Title){
+        Nodo <Resumenes> nodo = this.table[hash].searchTitle(Title);
+        return nodo;
+    }
     
     public List[] getTable() {
         return table;

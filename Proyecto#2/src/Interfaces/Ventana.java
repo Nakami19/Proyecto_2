@@ -5,12 +5,14 @@
 package Interfaces;
 
 import EDD.HashTable;
+import EDD.List;
 import EDD.Nodo;
 import EDD.Resumenes;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -21,6 +23,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Ventana extends javax.swing.JFrame {
 
+    DefaultListModel model =new DefaultListModel();
+
+    
     /**
      * Creates new form Ventana_1
      */
@@ -28,6 +33,7 @@ public class Ventana extends javax.swing.JFrame {
         initComponents();        
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        TitulosOrdenados.setModel(model);
     }
 
     /**
@@ -65,10 +71,18 @@ public class Ventana extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         Analize = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TitulosOrdenados = new javax.swing.JList<>();
+        Buscar_Datos = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
         Search_Author = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         Search_Key = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
+        Busqueda_Datos = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        datosResumen = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -226,7 +240,27 @@ public class Ventana extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Analizar Resúmenes");
-        Analize.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        Analize.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        TitulosOrdenados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TitulosOrdenados.setToolTipText("");
+        jScrollPane2.setViewportView(TitulosOrdenados);
+
+        Analize.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 510, 350));
+
+        Buscar_Datos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Buscar_Datos.setText("BUSCAR");
+        Buscar_Datos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Buscar_DatosActionPerformed(evt);
+            }
+        });
+        Analize.add(Buscar_Datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 220, 40));
+
+        jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("Por favor selecciona el titulo del resumen que quieres analizar");
+        Analize.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         Parent.add(Analize, "card3");
 
@@ -252,6 +286,43 @@ public class Ventana extends javax.swing.JFrame {
 
         Parent.add(Search_Key, "card5");
 
+        Busqueda_Datos.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("DATOS DEL RESUMEN");
+
+        datosResumen.setColumns(20);
+        datosResumen.setRows(5);
+        jScrollPane1.setViewportView(datosResumen);
+
+        javax.swing.GroupLayout Busqueda_DatosLayout = new javax.swing.GroupLayout(Busqueda_Datos);
+        Busqueda_Datos.setLayout(Busqueda_DatosLayout);
+        Busqueda_DatosLayout.setHorizontalGroup(
+            Busqueda_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Busqueda_DatosLayout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addGroup(Busqueda_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Busqueda_DatosLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Busqueda_DatosLayout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addGap(99, 99, 99))))
+        );
+        Busqueda_DatosLayout.setVerticalGroup(
+            Busqueda_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Busqueda_DatosLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel21)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+
+        Parent.add(Busqueda_Datos, "card6");
+
         getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 610, 540));
 
         pack();
@@ -259,7 +330,7 @@ public class Ventana extends javax.swing.JFrame {
     
 
     private void LeerTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeerTXTActionPerformed
-       Resumenes resumen=null;
+        Resumenes resumen=null;
         JFileChooser file = new JFileChooser();
         
         FileNameExtensionFilter filter = new FileNameExtensionFilter(".TXT","txt");
@@ -297,6 +368,8 @@ public class Ventana extends javax.swing.JFrame {
 
         if(!"".equals(ResumenInfo)) {
             HashTable hashtable=Global.getHashtable();
+            List<Nodo<String>> listaTitulos= Global.getListaTitulos();
+
             String[] Info1=ResumenInfo.split("0_0");
             String[] Info2;
             String[] Info3;
@@ -322,11 +395,18 @@ public class Ventana extends javax.swing.JFrame {
             
             resumen=new Resumenes(titulo,autores,contenido,keywords);
             
+
             boolean repetido=hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
-                if(repetido==false) {
+            
+            if(repetido==false) {
+                listaTitulos.insertFinal_String(resumen.getTitle());
+                listaTitulos.Ordenar_Lista();
+            
                 JOptionPane.showMessageDialog(null, "Resumen cargado con exito");
                 
                 }
+
+           
           }
             } 
             } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!!!"); }
@@ -343,10 +423,18 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarAutorActionPerformed
 
     private void AnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarActionPerformed
+        model.removeAllElements();
         Parent.removeAll();
         Parent.add(Analize);
         Parent.repaint();
         Parent.revalidate();
+        List<Nodo<String>> listaTitulos= Global.getListaTitulos();
+        Nodo<String> nodo = listaTitulos.getFirst();
+        
+        while (nodo!= null){
+            model.addElement(nodo.getData());
+            nodo = nodo.getNext();
+        }
     }//GEN-LAST:event_AnalizarActionPerformed
 
     private void BuscarClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClaveActionPerformed
@@ -401,6 +489,22 @@ public class Ventana extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_CerrarActionPerformed
 
+    private void Buscar_DatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_DatosActionPerformed
+
+        String titulo = TitulosOrdenados.getSelectedValue();
+        HashTable hashtable=Global.getHashtable();
+        try{
+            Nodo <Resumenes> nodo_seleccionado = hashtable.SearchTitle(hashtable.Hash(titulo),titulo);
+            datosResumen.setText(nodo_seleccionado.getData().print());
+            Parent.removeAll();
+            Parent.add(Busqueda_Datos);
+            Parent.repaint();
+            Parent.revalidate();        
+        }catch(Exception e ){
+            JOptionPane.showMessageDialog(null, "Error!!!");
+        }
+    }//GEN-LAST:event_Buscar_DatosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,12 +546,16 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel Analize;
     private javax.swing.JButton BuscarAutor;
     private javax.swing.JButton BuscarClave;
+    private javax.swing.JButton Buscar_Datos;
+    private javax.swing.JPanel Busqueda_Datos;
     private javax.swing.JButton Cerrar;
     private javax.swing.JButton LeerTXT;
     private javax.swing.JPanel Pannel;
     private javax.swing.JPanel Parent;
     private javax.swing.JPanel Search_Author;
     private javax.swing.JPanel Search_Key;
+    private javax.swing.JList<String> TitulosOrdenados;
+    private javax.swing.JTextArea datosResumen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -460,6 +568,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -467,6 +577,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }
