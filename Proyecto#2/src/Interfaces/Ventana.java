@@ -5,10 +5,12 @@
 package Interfaces;
 
 import EDD.HashTable;
+import EDD.Nodo;
 import EDD.Resumenes;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -89,6 +91,11 @@ public class Ventana extends javax.swing.JFrame {
         Cerrar.setMaximumSize(new java.awt.Dimension(84, 22));
         Cerrar.setMinimumSize(new java.awt.Dimension(84, 22));
         Cerrar.setPreferredSize(new java.awt.Dimension(80, 25));
+        Cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarActionPerformed(evt);
+            }
+        });
         Pannel.add(Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 130, -1));
 
         Analizar.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
@@ -250,75 +257,7 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
-    public void PreCargar() {
-    File archivo= null;
-      FileReader fr=null;
-      BufferedReader br = null;
-     
-      try {
-      archivo=new File ("test\\Conjunto.txt"); 
-      
-      if (archivo.exists()) {
-      fr=new FileReader(archivo); 
-      br=new BufferedReader(fr);  
-      String InfoPre;
-      String informacion=""; 
-      
-      while ((InfoPre=br.readLine())!=null) {
-          
-          if(!InfoPre.isEmpty()&& !InfoPre.isBlank()) {
-              informacion+=InfoPre+"\n";
-          
-          }
-      }
-       fr.close();
-      br.close();
-      
-      if(!"".equals(informacion)) {
-            Resumenes resumen=null;
-            String[] Info1=informacion.split("黎");
-            String[] Info2;
-            String[] Info3;
-            String[] Info4;
-            String[] Info5;
-            for (int i = 0; i < Info1.length; i++) {
-                Info1[i]=Info1[i].trim();
-                Info2=Info1[i].split("Autores");
-                HashTable hashtable=Global.getHashtable();
-            
-                Info2[0]=Info2[0].trim();
-                String titulo=Info2[0];
-                Info2[1]=Info2[1].trim();
-            
-                 Info3=Info2[1].split("Resumen");
-                Info3[0]=Info3[0].trim();
-                String autores=Info3[0];
-             Info4=Info3[1].trim().split("\n");
-            String contenido=Info4[0];
-            
-             Info5=Info4[1].split(":");
-            String keywords=Info5[1].trim();
-            
-            resumen=new Resumenes(titulo,autores,contenido,keywords);
-            
-            hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
-                System.out.println(resumen.print());
-          }
-            
-           
-      
-      
-      } 
 
-      } else {archivo.createNewFile();} //Crea un archivo si no existe
-      
-      }
-      catch (Exception e) {System.out.println("Error");}
-    
-    
-    
-    }
     private void LeerTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeerTXTActionPerformed
        Resumenes resumen=null;
         JFileChooser file = new JFileChooser();
@@ -358,28 +297,37 @@ public class Ventana extends javax.swing.JFrame {
 
         if(!"".equals(ResumenInfo)) {
             HashTable hashtable=Global.getHashtable();
-            String[] Info1=ResumenInfo.split("Autores");
+            String[] Info1=ResumenInfo.split("黎");
+            String[] Info2;
+            String[] Info3;
+            String[] Info4;
+            String[] Info5;
+            for (int i = 0; i < Info1.length; i++) {
+                Info1[i]=Info1[i].trim();
+                Info2=Info1[i].split("Autores");
+               
             
-            Info1[0]=Info1[0].trim();
-            String titulo=Info1[0];
-            Info1[1]=Info1[1].trim();
+                Info2[0]=Info2[0].trim();
+                String titulo=Info2[0];
+                Info2[1]=Info2[1].trim();
             
-            String[] Info2=Info1[1].split("Resumen");
-            Info2[0]=Info2[0].trim();
-            String autores=Info2[0];
-            String[] Info3=Info2[1].trim().split("\n");
-            String contenido=Info3[0];
+                 Info3=Info2[1].split("Resumen");
+                Info3[0]=Info3[0].trim();
+                String autores=Info3[0];
+             Info4=Info3[1].trim().split("\n");
+            String contenido=Info4[0];
             
-            String[] Info4=Info3[1].split(":");
-            String keywords=Info4[1].trim();
+             Info5=Info4[1].split(":");
+            String keywords=Info5[1].trim();
             
             resumen=new Resumenes(titulo,autores,contenido,keywords);
             
-            hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
-            
-            JOptionPane.showMessageDialog(null, "Resumen cargado con exito");
-
-            
+            boolean repetido=hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
+                if(repetido==false) {
+                JOptionPane.showMessageDialog(null, "Resumen cargado con exito");
+                
+                }
+          }
             } 
             } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!!!"); }
             
@@ -407,6 +355,23 @@ public class Ventana extends javax.swing.JFrame {
         Parent.repaint();
         Parent.revalidate();
     }//GEN-LAST:event_BuscarClaveActionPerformed
+
+    private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
+        HashTable hashtable=Global.getHashtable();
+        String resumen="";
+    for (int i = 0; i < hashtable.getTable().length ; i++){
+        Nodo <Resumenes> aux = hashtable.getTable()[i].getFirst();
+        
+        while (aux!= null){
+           resumen+= aux.getData().guardar()+"\n"+"黎"; // ---> lo de aqui es un objeto de clase resumen, si lo que quieres son su datos entonces tienes que ponerle tipo getTitle(), get...
+            aux = aux.getNext();
+        }
+        
+        
+    }
+        System.out.println(resumen);
+        System.exit(0);
+    }//GEN-LAST:event_CerrarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -61,14 +61,16 @@ public class List<T> {
         return getFirst() == null;
     }
     
-    public void insertFinal_Resumenes(Resumenes data){
+    public boolean insertFinal_Resumenes(Resumenes data){
+        
+        boolean repetidos = false;
         Nodo<Resumenes> node = new Nodo<Resumenes>(data);
         if (isEmpty()) {
             setFirst(node);
             setLast(node);
             size++;
         } else {
-            boolean repetidos = false;
+             repetidos = false;
             Nodo<Resumenes> pointer = getFirst();
             while (pointer != null) {
                 
@@ -76,6 +78,7 @@ public class List<T> {
                     repetidos = true;
 
                     JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen ^_^ ");
+                    return true;
                 }
                 
                 pointer = pointer.getNext();}
@@ -87,7 +90,7 @@ public class List<T> {
                 size++;
             } 
         }
-        
+        return repetidos;
     }   
     
     public void Ordenar_Lista(){

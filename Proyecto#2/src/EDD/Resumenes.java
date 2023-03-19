@@ -81,7 +81,7 @@ public class Resumenes {
         String resumen = "";
         int i = 1;        
         resumen += getTitle() + "\n"
-                + "Autores: " + getAuthors() + "\n";
+                + "Autores: " +"\n"+ getAuthors() + "\n";
         
         String[] words = getKeywords().toLowerCase().split(",");
         for(int index = 0; index < words.length; index++){
@@ -94,4 +94,12 @@ public class Resumenes {
         String text = getContent().toLowerCase();
         return text.split(word).length -1;
     }
+    
+     public String guardar() {
+   String resumen = "";       
+        resumen += getTitle() + "\n"+"\n"
+                + "Autores "+"\n" + getAuthors() +"\n"+ "\n"+"Resumen"+"\n"+getContent()+"\n"+"\n"+"Palabra clave:"+getKeywords();
+        return resumen.trim();
+   }
+    
 }
