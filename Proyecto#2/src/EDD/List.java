@@ -93,7 +93,36 @@ public class List<T> {
         return repetidos;
     }
     
-    public boolean insertFinal_String(String data){
+    public void insertFinal_PalabraClave(PalabraClave data){
+        
+        boolean repetidos = false;
+        Nodo<PalabraClave> node = new Nodo<PalabraClave>(data);
+        if (isEmpty()) {
+            setFirst(node);
+            setLast(node);
+            size++;
+        } else {
+            repetidos = false;
+            Nodo<PalabraClave> pointer = getFirst();
+            while (pointer != null) {
+                
+                if (pointer.getData().getPalabraclave().equalsIgnoreCase (node.getData().getPalabraclave())){
+                    pointer.getData().getLista_resumen().insertFinal_Resumenes((Resumenes) node.getData().getLista_resumen().getFirst().getData());
+                    repetidos = true;
+                }
+                
+                pointer = pointer.getNext();}
+            
+            if (repetidos == false){
+                pointer=getLast();
+                pointer.setNext(node);
+                setLast(node);
+                size++;
+            } 
+        }
+    }
+    
+    public void insertFinal_String(String data){
          boolean repetidos = false;
         Nodo<String> node = new Nodo<String>(data);
         if (isEmpty()) {
@@ -107,7 +136,6 @@ public class List<T> {
                 
                 if (pointer.getData().equalsIgnoreCase(node.getData())){
                     repetidos = true;
-                    return repetidos;
                 }
                 
                 pointer = pointer.getNext();
@@ -121,8 +149,24 @@ public class List<T> {
                 size++;
             } 
         }
-        return repetidos;
-    }   
+    }
+    
+    public Nodo<PalabraClave> searchPC(String PC){
+        
+        Nodo<PalabraClave> aux = getFirst();
+        Nodo<PalabraClave> nodo = null;
+            if (getSize() == 1){
+                nodo = aux;
+            }else{
+            while (aux != null){
+                if(aux.getData().getPalabraclave().equalsIgnoreCase(PC)){
+                    nodo = aux;
+                }
+                aux = aux.getNext();
+            }}
+        
+        return nodo;
+    }
     
     public Nodo<Resumenes> searchTitle(String titulo){
         

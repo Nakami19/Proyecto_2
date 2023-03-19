@@ -13,9 +13,10 @@ import EDD.Nodo;
  */
 public class Global {
     //Parámetros de la clase Global
-    private static HashTable hashtable = new HashTable();
+    private static HashTable hashtable = new HashTable(16);
     private static List<Nodo<String>> listaTitulos = new List();
-
+    private static HashTable keytable = new HashTable(32);
+    
     public static List<Nodo<String>> getListaTitulos() {
         return listaTitulos;
     }
@@ -30,6 +31,14 @@ public class Global {
 
     public static void setHashtable(HashTable hashtable) {
         Global.hashtable = hashtable;
+    }
+
+    public static HashTable getKeytable() {
+        return keytable;
+    }
+
+    public static void setKeytable(HashTable keytable) {
+        Global.keytable = keytable;
     }
     
 

@@ -7,6 +7,7 @@ package Interfaces;
 import EDD.HashTable;
 import EDD.List;
 import EDD.Nodo;
+import EDD.PalabraClave;
 import EDD.Resumenes;
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,9 +24,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Ventana extends javax.swing.JFrame {
 
-    DefaultListModel model =new DefaultListModel();
+    DefaultListModel model1 =new DefaultListModel();
 
-    DefaultListModel modelo = new DefaultListModel();
+    DefaultListModel model2 =new DefaultListModel();
+    
+    DefaultListModel model3 = new DefaultListModel();
     
     /**
      * Creates new form Ventana_1
@@ -34,8 +37,9 @@ public class Ventana extends javax.swing.JFrame {
         initComponents();        
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        TitulosOrdenados.setModel(model);
-        AutoresOrdenados.setModel(modelo);
+        TitulosOrdenados.setModel(model1);
+        ListaResumenes.setModel(model2);
+        AutoresOrdenados.setModel(model3);
     }
 
     /**
@@ -85,6 +89,13 @@ public class Ventana extends javax.swing.JFrame {
         Buscar_Datos1 = new javax.swing.JButton();
         Search_Key = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ListaResumenes = new javax.swing.JList<>();
+        jLabel23 = new javax.swing.JLabel();
+        palabraclave = new javax.swing.JTextField();
+        ingreso_clave = new javax.swing.JButton();
+        analisis_clave = new javax.swing.JButton();
         Busqueda_Datos = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -138,7 +149,7 @@ public class Ventana extends javax.swing.JFrame {
         });
         Pannel.add(BuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 130, -1));
 
-        BuscarClave.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
+        BuscarClave.setFont(new java.awt.Font("Swis721 BT", 0, 10)); // NOI18N
         BuscarClave.setText("BUSCAR CLAVES");
         BuscarClave.setPreferredSize(new java.awt.Dimension(80, 25));
         BuscarClave.addActionListener(new java.awt.event.ActionListener() {
@@ -277,14 +288,14 @@ public class Ventana extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Búsqueda por Autor");
-        Search_Author.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        Search_Author.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxActionPerformed(evt);
             }
         });
-        Search_Author.add(ComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 130, -1));
+        Search_Author.add(ComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 280, -1));
 
         AutoresOrdenados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         AutoresOrdenados.setToolTipText("");
@@ -310,7 +321,42 @@ public class Ventana extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Búsqueda por palabra clave");
-        Search_Key.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+        Search_Key.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("SELECCIONE EL TITULO DE RESUMEN QUE DESEA ANALIZAR");
+        Search_Key.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 470, 20));
+
+        ListaResumenes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jScrollPane4.setViewportView(ListaResumenes);
+
+        Search_Key.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 540, 210));
+
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("INGRESE PALABRA CLAVE");
+        Search_Key.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 250, 20));
+        Search_Key.add(palabraclave, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 270, 40));
+
+        ingreso_clave.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        ingreso_clave.setText("INGRESO PALABRA CLAVE");
+        ingreso_clave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingreso_claveActionPerformed(evt);
+            }
+        });
+        Search_Key.add(ingreso_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 180, 40));
+
+        analisis_clave.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        analisis_clave.setForeground(new java.awt.Color(0, 0, 0));
+        analisis_clave.setText("ANALIZAR RESUMEN");
+        analisis_clave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                analisis_claveActionPerformed(evt);
+            }
+        });
+        Search_Key.add(analisis_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 290, 50));
 
         Parent.add(Search_Key, "card5");
 
@@ -321,7 +367,7 @@ public class Ventana extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Swis721 Cn BT", 1, 36)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("DATOS DEL RESUMEN");
-        Busqueda_Datos.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
+        Busqueda_Datos.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
         datosResumen.setColumns(20);
         datosResumen.setRows(5);
@@ -379,9 +425,11 @@ public class Ventana extends javax.swing.JFrame {
         ResumenInfo=ResumenInfo.trim();
 
         if(!"".equals(ResumenInfo)) {
+            
             HashTable hashtable=Global.getHashtable();
             List<Nodo<String>> listaTitulos= Global.getListaTitulos();
-
+            HashTable keytable=Global.getKeytable();
+            
             String[] Info1=ResumenInfo.split("0_0");
             String[] Info2;
             String[] Info3;
@@ -408,15 +456,27 @@ public class Ventana extends javax.swing.JFrame {
              Info5=Info4[1].split(":");
             String keywords=Info5[1].trim();
             
+            String clave[];
+            clave = new String [1];
+            clave[0]=keywords;
+            clave = clave[0].split(", ");
+            
             resumen=new Resumenes(titulo,autores,contenido,keywords);
             
             
-            boolean repetido=hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
+            boolean repetido=hashtable.Insert_Resumen(hashtable.Hash(resumen.getTitle()), resumen);
             
             if(repetido==false) {
                 listaTitulos.insertFinal_String(resumen.getTitle());
                 listaTitulos.Ordenar_Lista();
             
+                for (int aux = 0; aux < clave.length; aux++){
+                    List<Nodo<Resumenes>> lista = new List();
+                    lista.insertFinal_Resumenes(resumen);
+                    PalabraClave objeto = new PalabraClave(clave[aux],lista); 
+                    keytable.Insert_PC(keytable.Hash(clave[aux].toLowerCase().replace(".", "")), objeto);
+                    }
+                
                 JOptionPane.showMessageDialog(null, "Resumen cargado con exito");
                 
                 }
@@ -465,7 +525,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarAutorActionPerformed
 
     private void AnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarActionPerformed
-        model.removeAllElements();
+        model1.removeAllElements();
         Parent.removeAll();
         Parent.add(Analize);
         Parent.repaint();
@@ -474,7 +534,7 @@ public class Ventana extends javax.swing.JFrame {
         Nodo<String> nodo = listaTitulos.getFirst();
         
         while (nodo!= null){
-            model.addElement(nodo.getData());
+            model1.addElement(nodo.getData());
             nodo = nodo.getNext();
         }
     }//GEN-LAST:event_AnalizarActionPerformed
@@ -562,7 +622,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_Buscar_Datos1ActionPerformed
 
     private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
-        modelo.removeAllElements();
+        model3.removeAllElements();
         if(ComboBox.getSelectedItem() != null){
            HashTable hashtable=Global.getHashtable();
             List<String> listaTitulos = new List();
@@ -575,10 +635,51 @@ public class Ventana extends javax.swing.JFrame {
             }
         
             for(Nodo<String> node = listaTitulos.getFirst(); node != null; node = node.getNext()){                
-                modelo.addElement(node.getData());
+                model3.addElement(node.getData());
             } 
         }        
     }//GEN-LAST:event_ComboBoxActionPerformed
+
+    private void ingreso_claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingreso_claveActionPerformed
+        model2.removeAllElements();
+        try{
+            HashTable keytable= Global.getKeytable();
+            Nodo <PalabraClave> nodo = keytable.SearchPalabraClave(keytable.Hash(palabraclave.getText().toLowerCase()), palabraclave.getText());
+            Nodo <Resumenes> aux = nodo.getData().getLista_resumen().getFirst();
+            List<String> lista = new List();
+
+            while (aux!=null){
+                lista.insertFinal_String(aux.getData().getTitle());
+                aux = aux.getNext();
+            }
+            lista.Ordenar_Lista();
+            Nodo <String> nodito = lista.getFirst();
+
+            while (nodito!= null){
+
+                model2.addElement(nodito.getData());
+                nodito = nodito.getNext();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error!!! No se ha encontrado dicha palabra");
+        }
+        palabraclave.setText("");
+    }//GEN-LAST:event_ingreso_claveActionPerformed
+
+    private void analisis_claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analisis_claveActionPerformed
+        String titulo = ListaResumenes.getSelectedValue();
+        HashTable hashtable=Global.getHashtable();
+        try{
+            Nodo <Resumenes> nodo_seleccionado = hashtable.SearchTitle(hashtable.Hash(titulo),titulo);
+            datosResumen.setText(nodo_seleccionado.getData().print());
+            Parent.removeAll();
+            Parent.add(Busqueda_Datos);
+            Parent.repaint();
+            Parent.revalidate();
+        }catch(Exception e ){
+            JOptionPane.showMessageDialog(null, "Error!!!");
+        }
+    }//GEN-LAST:event_analisis_claveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -628,12 +729,15 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton Cerrar;
     private javax.swing.JComboBox<String> ComboBox;
     private javax.swing.JButton LeerTXT;
+    private javax.swing.JList<String> ListaResumenes;
     private javax.swing.JPanel Pannel;
     private javax.swing.JPanel Parent;
     private javax.swing.JPanel Search_Author;
     private javax.swing.JPanel Search_Key;
     private javax.swing.JList<String> TitulosOrdenados;
+    private javax.swing.JButton analisis_clave;
     private javax.swing.JTextArea datosResumen;
+    private javax.swing.JButton ingreso_clave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -648,6 +752,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -658,6 +764,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel main;
+    private javax.swing.JTextField palabraclave;
     // End of variables declaration//GEN-END:variables
 }
