@@ -139,9 +139,10 @@ public class Ventana extends javax.swing.JFrame {
             hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
             
             JOptionPane.showMessageDialog(null, "Resumen cargado con exito");
+
             
             } 
-            } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error"); }
+            } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!!!"); }
             
             }
         }
