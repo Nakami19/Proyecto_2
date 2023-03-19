@@ -30,8 +30,9 @@ public class HashTable {
         return hash;
     }
     
-    public void Insert(int hash,Resumenes data){
-        this.table[hash].insertFinal_Resumenes(data);
+    public boolean Insert(int hash,Resumenes data){
+        boolean repetidos=this.table[hash].insertFinal_Resumenes(data);
+        return repetidos;
     }
     
     
