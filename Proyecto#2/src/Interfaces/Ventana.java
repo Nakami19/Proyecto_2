@@ -4,6 +4,14 @@
  */
 package Interfaces;
 
+import EDD.Resumenes;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author Tomas
@@ -42,6 +50,11 @@ public class Ventana extends javax.swing.JFrame {
         Pannel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("LEER TXT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         Pannel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         getContentPane().add(Pannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 540));
@@ -65,6 +78,71 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Resumenes resumen=null;
+        JFileChooser file = new JFileChooser();
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".TXT","txt");
+        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        file.setFileFilter(filter);
+        int selection=file.showOpenDialog(this);
+        
+        if(selection==JFileChooser.APPROVE_OPTION){
+        
+            File archive=file.getSelectedFile();
+            String path=archive.getAbsolutePath();
+        if(!path.contains("txt")) {
+            JOptionPane.showMessageDialog(null, "Por favor elija un archivo del tipo txt");
+            }
+            else{
+            try{
+                File archivo = new File (path); 
+                FileReader fr = new FileReader(archivo); 
+                BufferedReader br = new BufferedReader(fr); 
+                
+                String Resumen;
+                String ResumenInfo=""; 
+      
+        while ((Resumen=br.readLine())!=null) { 
+
+            if(!Resumen.isEmpty()&& !Resumen.isBlank()) {
+                ResumenInfo+=Resumen+"\n";
+                
+
+            }
+        }
+         fr.close();
+        br.close();
+        ResumenInfo=ResumenInfo.trim();
+
+        if(!"".equals(ResumenInfo)) {
+            
+            String[] Info1=ResumenInfo.split("Autores");
+            
+            Info1[0]=Info1[0].trim();
+            String titulo=Info1[0];
+            Info1[1]=Info1[1].trim();
+            
+            String[] Info2=Info1[1].split("Resumen");
+            Info2[0]=Info2[0].trim();
+            String autores=Info2[0];
+            String[] Info3=Info2[1].trim().split("\n");
+            String contenido=Info3[0];
+            
+            String[] Info4=Info3[1].split(":");
+            String keywords=Info4[1].trim();
+            
+            resumen=new Resumenes(titulo,autores,contenido,keywords);
+            
+            System.out.println(resumen.print());
+            
+            } 
+            } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error"); }
+            
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
