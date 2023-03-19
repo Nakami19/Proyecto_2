@@ -297,7 +297,7 @@ public class Ventana extends javax.swing.JFrame {
 
         if(!"".equals(ResumenInfo)) {
             HashTable hashtable=Global.getHashtable();
-            String[] Info1=ResumenInfo.split("黎");
+            String[] Info1=ResumenInfo.split("0_0");
             String[] Info2;
             String[] Info3;
             String[] Info4;
@@ -363,13 +363,41 @@ public class Ventana extends javax.swing.JFrame {
         Nodo <Resumenes> aux = hashtable.getTable()[i].getFirst();
         
         while (aux!= null){
-           resumen+= aux.getData().guardar()+"\n"+"黎"; // ---> lo de aqui es un objeto de clase resumen, si lo que quieres son su datos entonces tienes que ponerle tipo getTitle(), get...
+           resumen+= aux.getData().guardar()+"\n"+"0_0"+"\n"; // ---> lo de aqui es un objeto de clase resumen, si lo que quieres son su datos entonces tienes que ponerle tipo getTitle(), get...
             aux = aux.getNext();
         }
         
         
     }
-        System.out.println(resumen);
+            JOptionPane.showMessageDialog(null, "Escoja donde guardara los resumenes");
+          JFileChooser file = new JFileChooser();
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".TXT","txt");
+        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        file.setFileFilter(filter);
+        int selection=file.showOpenDialog(null); //en la interfaz se pone this
+        
+        if(selection==JFileChooser.APPROVE_OPTION){
+        
+            File archive=file.getSelectedFile();
+            String path=archive.getAbsolutePath();
+        if(!path.contains("txt")) {
+            JOptionPane.showMessageDialog(null, "Por favor elija un archivo del tipo txt");
+            }
+            else{
+        try {
+           PrintWriter pw=new PrintWriter(path); //para escribir, se pone la direccion de la carpeta\\nombre del archivo, si el archivo no existe lo crea
+           
+           pw.print(resumen);//mete todo de una en el txt borrando lo que habia anteriormente
+           pw.close(); 
+           JOptionPane.showMessageDialog(null, "Guardado exitoso");
+       } catch(Exception e) {
+           JOptionPane.showMessageDialog(null,"Error!!!");
+       }
+        
+        }
+    
+    }
         System.exit(0);
     }//GEN-LAST:event_CerrarActionPerformed
 
