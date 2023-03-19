@@ -25,6 +25,7 @@ public class Ventana extends javax.swing.JFrame {
 
     DefaultListModel model =new DefaultListModel();
 
+    DefaultListModel modelo = new DefaultListModel();
     
     /**
      * Creates new form Ventana_1
@@ -34,6 +35,7 @@ public class Ventana extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         TitulosOrdenados.setModel(model);
+        AutoresOrdenados.setModel(modelo);
     }
 
     /**
@@ -546,7 +548,22 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_Buscar_Datos1ActionPerformed
 
     private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
+        modelo.removeAllElements();
+        if(ComboBox.getSelectedItem() != null){
+           HashTable hashtable=Global.getHashtable();
+            List<String> listaTitulos = new List();
+            for (int i = 0; i < hashtable.getTable().length ; i++){
+                Nodo <Resumenes> aux = hashtable.getTable()[i].getFirst();
+                while (aux!= null && aux.getData().getAuthors().contains(ComboBox.getSelectedItem().toString())){
+                listaTitulos.insertFinal_String(aux.getData().getTitle()); 
+                aux = aux.getNext();
+                }
+            }
         
+            for(Nodo<String> node = listaTitulos.getFirst(); node != null; node = node.getNext()){                
+                modelo.addElement(node.getData());
+            } 
+        }        
     }//GEN-LAST:event_ComboBoxActionPerformed
 
     /**
