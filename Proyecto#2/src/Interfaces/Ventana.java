@@ -338,6 +338,10 @@ public class Ventana extends javax.swing.JFrame {
     
 
     private void LeerTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeerTXTActionPerformed
+        Parent.removeAll();
+        Parent.add(main);
+        Parent.repaint();
+        Parent.revalidate(); 
         Resumenes resumen=null;
         JFileChooser file = new JFileChooser();
         
