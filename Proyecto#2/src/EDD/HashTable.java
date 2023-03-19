@@ -34,11 +34,6 @@ public class HashTable {
         this.table[hash].insertFinal_Resumenes(data);
     }
     
-    public Nodo<Resumenes> Search_Title(int hash, String title){
-        Nodo<Resumenes> nodo = this.table[hash].Search_Title(title);
-        return nodo;
-    }
-    
     public List[] getTable() {
         return table;
     }

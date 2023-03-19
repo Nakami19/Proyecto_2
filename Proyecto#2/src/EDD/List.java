@@ -84,36 +84,55 @@ public class List<T> {
                 pointer.setNext(node);
                 setLast(node);
                 size++;
-            }
+            } 
         }
         
+    }   
+    
+    public void Ordenar_Lista(){
+        Nodo<Resumenes> aux = getFirst();
+        Nodo<Resumenes> index;
+        Resumenes temp;
+        if (isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error!! La lista se encuentra vacia");
+        } else{
+            while (aux != null){
+                index = aux.getNext();
+                while (index!=null){
+                    if(aux.getData().getTitle().toLowerCase().compareTo(index.getData().getTitle().toLowerCase()) > index.getData().getTitle().toLowerCase().compareTo(aux.getData().getTitle().toLowerCase())){
+                        temp = aux.getData();
+                        aux.setData(index.getData());
+                        index.setData(temp);
+                    }
+                    index = index.getNext();
+                }
+                aux = aux.getNext();
+            }
+        }
     }
     
-    public Nodo<Resumenes> Search_Title (String title){
-        Nodo<Resumenes> pointer = getFirst();
-        Nodo<Resumenes> nodo = null;
-        while (pointer != null){
-            if (pointer.getData().getTitle() == title){
-                
-                nodo = pointer;
-                break;
-            }
-            pointer = pointer.getNext();
+    public Nodo<Resumenes> searchNodo(int index){
+        Nodo <Resumenes> aux = getFirst();
+        Nodo <Resumenes> nodo = null;
+        Integer i = 1;
+        if (isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error!! La lista se encuentra vacia");
         }
-
+        else if (index > getSize()){
+            JOptionPane.showMessageDialog(null,"Error!! por favor ingrese un numero mostrado en pantalla");
+        } else if (index <= getSize()){
+            while (aux!=null){
+                if (i == index){
+                    nodo = aux;
+                    break;
+                }
+                aux=aux.getNext();
+                i++;
+            }
+        }
         return nodo;
-        
     }
     
-    public void Imprimir(){
-        Nodo<Resumenes> pointer = getFirst();
-        while (pointer!=null){
-            System.out.println(pointer.getData().getTitle());
-            pointer = pointer.getNext();
-        }
-    }
-        
-        
     public String showResumes(List<Nodo<Resumenes>> resumenes, String texto){
         for(Nodo<Resumenes> node = resumenes.getFirst(); node != null; node = node.getNext()){
             texto += node.getData().print();
