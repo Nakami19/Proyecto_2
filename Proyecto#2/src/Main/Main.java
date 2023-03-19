@@ -32,6 +32,11 @@ public class Main {
         prueba1.Insert(12,aresumen);
         prueba1.Insert(12,bresumen);
         
+        System.out.println(prueba1.Hash("Complemento de software para el diseño de fundaciones."));
+        System.out.println(prueba1.Hash("Arquitectura referencial para mecanismos de Internacionalización y localización en PHP."));
+        System.out.println(prueba1.Hash("Sistema de diseño basado en Grid"));
+        System.out.println(prueba1.Hash("GraphQL vs REST: una comparación desde la perspectiva de eficiencia de desempeño."));
+        
         
         System.out.println(prueba1.Search_Title(12, "b").getData().getContent());
         

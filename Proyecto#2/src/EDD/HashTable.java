@@ -13,10 +13,10 @@ public class HashTable {
     private Integer size;
 
     public HashTable() {
-        this.size = 17;
+        this.size = 16;
         this.table = new List [this.size];
         
-        for (int i = 0 ; i < 17; i++){
+        for (int i = 0 ; i < 16; i++){
             List<Nodo<Resumenes>> lista = new List();
             table[i]= lista;
         }
