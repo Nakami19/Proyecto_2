@@ -79,7 +79,76 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    
+    public void PreCargar() {
+    File archivo= null;
+      FileReader fr=null;
+      BufferedReader br = null;
+     
+      try {
+      archivo=new File ("test\\Conjunto.txt"); 
+      
+      if (archivo.exists()) {
+      fr=new FileReader(archivo); 
+      br=new BufferedReader(fr);  
+      String InfoPre;
+      String informacion=""; 
+      
+      while ((InfoPre=br.readLine())!=null) {
+          
+          if(!InfoPre.isEmpty()&& !InfoPre.isBlank()) {
+              informacion+=InfoPre+"\n";
+          
+          }
+      }
+       fr.close();
+      br.close();
+      
+      if(!"".equals(informacion)) {
+            Resumenes resumen=null;
+            String[] Info1=informacion.split("黎");
+            String[] Info2;
+            String[] Info3;
+            String[] Info4;
+            String[] Info5;
+            for (int i = 0; i < Info1.length; i++) {
+                Info1[i]=Info1[i].trim();
+                Info2=Info1[i].split("Autores");
+                HashTable hashtable=Global.getHashtable();
+            
+                Info2[0]=Info2[0].trim();
+                String titulo=Info2[0];
+                Info2[1]=Info2[1].trim();
+            
+                 Info3=Info2[1].split("Resumen");
+                Info3[0]=Info3[0].trim();
+                String autores=Info3[0];
+             Info4=Info3[1].trim().split("\n");
+            String contenido=Info4[0];
+            
+             Info5=Info4[1].split(":");
+            String keywords=Info5[1].trim();
+            
+            resumen=new Resumenes(titulo,autores,contenido,keywords);
+            
+            hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
+                System.out.println(resumen.print());
+          }
+            
+           
+      
+      
+      } 
 
+      } else {archivo.createNewFile();} //Crea un archivo si no existe
+      
+      }
+      catch (Exception e) {System.out.println("Error");}
+    
+    
+    
+    }
     private void LeerTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeerTXTActionPerformed
        Resumenes resumen=null;
         JFileChooser file = new JFileChooser();

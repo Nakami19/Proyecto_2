@@ -72,8 +72,9 @@ public class List<T> {
             Nodo<Resumenes> pointer = getFirst();
             while (pointer != null) {
                 
-                if (pointer.getData().getTitle() == node.getData().getTitle()){
+                if (pointer.getData().getTitle().equalsIgnoreCase (node.getData().getTitle())){
                     repetidos = true;
+
                     JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen ^_^ ");
                 }
                 
