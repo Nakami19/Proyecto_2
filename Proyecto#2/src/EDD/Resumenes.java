@@ -84,7 +84,7 @@ public class Resumenes {
                 + "Autores: " + getAuthors().showElements(getAuthors(), "") + "\n";
         
         for(Nodo<String> nodo = getKeywords().getHead(); nodo != null;){
-            resumen += "Palabra clave " + i + ": ";
+            resumen += "Palabra clave " + Integer.toString(i) + ": " + nodo.getData() +" Frecuencia en el texto: "+ Integer.toString(wordAmmount(nodo.getData()));
             i++;
         }
         return resumen;
