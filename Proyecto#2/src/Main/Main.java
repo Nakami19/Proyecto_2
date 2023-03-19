@@ -4,7 +4,7 @@
  */
 package Main;
 
-import Interfaces.Ventana_1;
+import Interfaces.Ventana;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Ventana_1 ventana = new Ventana_1();
+        Ventana ventana = new Ventana();
         ventana.setVisible(true);
     }
     
