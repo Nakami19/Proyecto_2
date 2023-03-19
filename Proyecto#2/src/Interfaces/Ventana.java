@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import EDD.HashTable;
 import EDD.Resumenes;
 import java.io.BufferedReader;
 import java.io.File;
@@ -37,7 +38,7 @@ public class Ventana extends javax.swing.JFrame {
     private void initComponents() {
 
         Pannel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        LeerTXT = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -49,13 +50,13 @@ public class Ventana extends javax.swing.JFrame {
         Pannel.setBackground(new java.awt.Color(0, 0, 0));
         Pannel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("LEER TXT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        LeerTXT.setText("LEER TXT");
+        LeerTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LeerTXTActionPerformed(evt);
             }
         });
-        Pannel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+        Pannel.add(LeerTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 100, -1));
 
         getContentPane().add(Pannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 540));
 
@@ -79,7 +80,7 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LeerTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeerTXTActionPerformed
        Resumenes resumen=null;
         JFileChooser file = new JFileChooser();
         
@@ -117,7 +118,7 @@ public class Ventana extends javax.swing.JFrame {
         ResumenInfo=ResumenInfo.trim();
 
         if(!"".equals(ResumenInfo)) {
-            
+            HashTable hashtable=Global.getHashtable();
             String[] Info1=ResumenInfo.split("Autores");
             
             Info1[0]=Info1[0].trim();
@@ -135,14 +136,16 @@ public class Ventana extends javax.swing.JFrame {
             
             resumen=new Resumenes(titulo,autores,contenido,keywords);
             
-            System.out.println(resumen.print());
+            hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
+            
+            JOptionPane.showMessageDialog(null, "Resumen cargado con exito");
             
             } 
             } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error"); }
             
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LeerTXTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,9 +184,9 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton LeerTXT;
     private javax.swing.JPanel Pannel;
     private javax.swing.JPanel Parent;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
