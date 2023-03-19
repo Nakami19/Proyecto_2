@@ -81,16 +81,17 @@ public class Resumenes {
         String resumen = "";
         int i = 1;        
         resumen += getTitle() + "\n"
-                + "Autores: " + getAuthors() + "\n";
+                + "Autores: "+"\n" + getAuthors() + "\n";
         
-        String[] words = getKeywords().split("\n");
+        String[] words = getKeywords().split(",");
         for(int index = 0; index < words.length; index++){
-            resumen += "Palabra clave: " + words[index] + ": " + " Frecuencia en el texto: "+ Integer.toString(wordAmmount(words[index])) + "\n"; 
+            resumen += "Palabra clave: " + words[index] + ", " + " Frecuencia en el texto: "+ Integer.toString(wordAmmount(words[index])) + "\n"; 
         }
         /*for(Nodo<String> nodo = getKeywords().getHead(); nodo != null;){
             resumen += "Palabra clave " + Integer.toString(i) + ": " + nodo.getData() +" Frecuencia en el texto: "+ Integer.toString(wordAmmount(nodo.getData()));
             i++;
         }*/
+        resumen=resumen.trim();
         return resumen;
     }
     
