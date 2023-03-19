@@ -93,31 +93,35 @@ public class List<T> {
         return repetidos;
     }
     
-    public void insertFinal_String(String data){
+    public boolean insertFinal_String(String data){
+         boolean repetidos = false;
         Nodo<String> node = new Nodo<String>(data);
         if (isEmpty()) {
             setFirst(node);
             setLast(node);
             size++;
         } else {
-            boolean repetidos = false;
+            repetidos = false;
             Nodo<String> pointer = getFirst();
             while (pointer != null) {
                 
                 if (pointer.getData().equalsIgnoreCase(node.getData())){
                     repetidos = true;
+                    return repetidos;
                 }
                 
-                pointer = pointer.getNext();}
-            
+                pointer = pointer.getNext();
+            }
+           
             if (repetidos == false){
+               
                 pointer=getLast();
                 pointer.setNext(node);
                 setLast(node);
                 size++;
             } 
         }
-        
+        return repetidos;
     }   
     
     public Nodo<Resumenes> searchTitle(String titulo){

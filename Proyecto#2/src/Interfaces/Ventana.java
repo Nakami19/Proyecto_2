@@ -399,6 +399,9 @@ public class Ventana extends javax.swing.JFrame {
                  Info3=Info2[1].split("Resumen");
                 Info3[0]=Info3[0].trim();
                 String autores=Info3[0];
+              
+                autores=autores.replace("-", " ");
+                
              Info4=Info3[1].trim().split("\n");
             String contenido=Info4[0];
             
@@ -434,7 +437,6 @@ public class Ventana extends javax.swing.JFrame {
         Parent.revalidate();
 
         ComboBox.removeAllItems();
-        
         HashTable hashtable=Global.getHashtable();
         List<String> listaAutores = new List();
         for (int i = 0; i < hashtable.getTable().length ; i++){
@@ -442,7 +444,9 @@ public class Ventana extends javax.swing.JFrame {
             while (aux!= null){
                 String[] autores = aux.getData().getAuthors().split("\n");
                 for(int j = 0; j < autores.length; j++){
-                    listaAutores.insertFinal_String(autores[j]);
+
+                    listaAutores.insertFinal_String(autores[j].trim());
+                    
                 }             
                 aux = aux.getNext();
             }
@@ -450,7 +454,12 @@ public class Ventana extends javax.swing.JFrame {
         
         
         for(Nodo<String> node = listaAutores.getFirst(); node != null; node = node.getNext()){
+           
+
             ComboBox.addItem(node.getData());
+
+            
+            
         }
 
     }//GEN-LAST:event_BuscarAutorActionPerformed
