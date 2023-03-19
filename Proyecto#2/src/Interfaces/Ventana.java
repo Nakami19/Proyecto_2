@@ -395,7 +395,7 @@ public class Ventana extends javax.swing.JFrame {
             
             resumen=new Resumenes(titulo,autores,contenido,keywords);
             
-
+            
             boolean repetido=hashtable.Insert(hashtable.Hash(resumen.getTitle()), resumen);
             
             if(repetido==false) {
@@ -420,6 +420,9 @@ public class Ventana extends javax.swing.JFrame {
         Parent.add(Search_Author);
         Parent.repaint();
         Parent.revalidate();
+        model.removeAllElements();
+        
+        model.addElement("lol");
     }//GEN-LAST:event_BuscarAutorActionPerformed
 
     private void AnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarActionPerformed
@@ -454,7 +457,6 @@ public class Ventana extends javax.swing.JFrame {
            resumen+= aux.getData().guardar()+"\n"+"0_0"+"\n"; // ---> lo de aqui es un objeto de clase resumen, si lo que quieres son su datos entonces tienes que ponerle tipo getTitle(), get...
             aux = aux.getNext();
         }
-        
         
     }
             JOptionPane.showMessageDialog(null, "Escoja donde guardara los resumenes");
