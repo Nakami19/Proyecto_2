@@ -77,5 +77,30 @@ public class Resumenes {
         this.keywords = keywords;
     }
     
+    public String print(){
+        String resumen = "";
+        int i = 1;        
+        resumen += getTitle() + "\n"
+                + "Autores: " + getAuthors().showElements(getAuthors(), "") + "\n";
+        
+        for(Nodo<String> nodo = getKeywords().getHead(); nodo != null;){
+            resumen += "Palabra clave " + i + ": ";
+            i++;
+        }
+        return resumen;
+    }
     
+    public int wordAmmount(String word){
+        int wordCount = 0;
+        
+        String text = getContent();
+        String[] words = text.replaceAll("\\p{Punct}", "").split(" ");
+
+        for(int i=0; i < words.length; i++){
+            if(words[i].equals(word)){
+                wordCount++;
+            }
+        }
+        return wordCount;
+    }
 }

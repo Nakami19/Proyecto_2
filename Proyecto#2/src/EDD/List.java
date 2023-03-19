@@ -63,4 +63,23 @@ public class List<T> {
         size++;
         return node;
     }
+    
+    public String showElements(List<String> elements, String elementos){
+        Nodo<String> node = elements.getHead();
+        while(node.getNext() != null){
+            elementos += node.getData() + ", ";
+            node = node.getNext();
+        }
+        elementos += node.getData();
+        
+        return elementos;
+    }
+    
+    public String showResumes(List<Resumenes> resumenes, String texto){
+        for(Nodo<Resumenes> node = resumenes.getHead(); node != null; node = node.getNext()){
+            texto += node.getData().print();
+            texto += "\n";
+        }
+        return texto;
+    }
 }
