@@ -108,6 +108,7 @@ public class List<T> {
         while (pointer != null){
             if (pointer.getData().getTitle() == title){
                 nodo = pointer;
+                break;
             }
             pointer = pointer.getNext();
         }
