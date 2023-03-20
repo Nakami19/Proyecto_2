@@ -9,15 +9,15 @@ package EDD;
  * @author kevin
  */
 public class HashTable {
-    private List<Nodo<Resumenes>> [] table;
+    private List<Nodo> [] table;
     private Integer size;
 
-    public HashTable() {
-        this.size = 16;
+    public HashTable(int size) {
+        this.size = size;
         this.table = new List [this.size];
         
-        for (int i = 0 ; i < 16; i++){
-            List<Nodo<Resumenes>> lista = new List();
+        for (int i = 0 ; i < size; i++){
+            List<Nodo> lista = new List();
             table[i]= lista;
         }
     }
@@ -30,13 +30,23 @@ public class HashTable {
         return hash;
     }
     
-    public boolean Insert(int hash,Resumenes data){
+    public boolean Insert_Resumen(int hash,Resumenes data){
         boolean repetidos=this.table[hash].insertFinal_Resumenes(data);
         return repetidos;
     }
+    
+    public void Insert_PC(int hash,PalabraClave data){
+         this.table[hash].insertFinal_PalabraClave(data);
+    }
+    
 
     public Nodo<Resumenes> SearchTitle(int hash, String Title){
         Nodo <Resumenes> nodo = this.table[hash].searchTitle(Title);
+        return nodo;
+    }
+    
+    public Nodo<PalabraClave> SearchPalabraClave(int hash, String PC){
+        Nodo <PalabraClave> nodo = this.table[hash].searchPC(PC);
         return nodo;
     }
     
@@ -53,3 +63,4 @@ public class HashTable {
     }
     
 }
+
