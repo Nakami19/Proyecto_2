@@ -82,7 +82,7 @@ public class Ventana extends javax.swing.JFrame {
         ComboBox = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         AutoresOrdenados = new javax.swing.JList<>();
-        Buscar_Datos1 = new javax.swing.JButton();
+        Buscar_Datos_Autor = new javax.swing.JButton();
         Search_Key = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         Busqueda_Datos = new javax.swing.JPanel();
@@ -292,14 +292,14 @@ public class Ventana extends javax.swing.JFrame {
 
         Search_Author.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 510, 350));
 
-        Buscar_Datos1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Buscar_Datos1.setText("BUSCAR");
-        Buscar_Datos1.addActionListener(new java.awt.event.ActionListener() {
+        Buscar_Datos_Autor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Buscar_Datos_Autor.setText("BUSCAR");
+        Buscar_Datos_Autor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar_Datos1ActionPerformed(evt);
+                Buscar_Datos_AutorActionPerformed(evt);
             }
         });
-        Search_Author.add(Buscar_Datos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 220, 40));
+        Search_Author.add(Buscar_Datos_Autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 220, 40));
 
         Parent.add(Search_Author, "card4");
 
@@ -377,9 +377,9 @@ public class Ventana extends javax.swing.JFrame {
          fr.close();
         br.close();
         ResumenInfo=ResumenInfo.trim();
-
+        HashTable hashtable=Global.getHashtable();
         if(!"".equals(ResumenInfo)) {
-            HashTable hashtable=Global.getHashtable();
+            
             List<Nodo<String>> listaTitulos= Global.getListaTitulos();
 
             String[] Info1=ResumenInfo.split("0_0");
@@ -420,10 +420,11 @@ public class Ventana extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Resumen cargado con exito");
                 
                 }
-
+            
            
           }
             } 
+
             } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!!!"); }
             
             }
@@ -546,7 +547,7 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Buscar_DatosActionPerformed
 
-    private void Buscar_Datos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Datos1ActionPerformed
+    private void Buscar_Datos_AutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Datos_AutorActionPerformed
         String titulo = AutoresOrdenados.getSelectedValue();
         HashTable hashtable=Global.getHashtable();
         try{
@@ -559,7 +560,7 @@ public class Ventana extends javax.swing.JFrame {
         }catch(Exception e ){
             JOptionPane.showMessageDialog(null, "Error!!!");
         }
-    }//GEN-LAST:event_Buscar_Datos1ActionPerformed
+    }//GEN-LAST:event_Buscar_Datos_AutorActionPerformed
 
     private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
         modelo.removeAllElements();
@@ -623,7 +624,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton BuscarAutor;
     private javax.swing.JButton BuscarClave;
     private javax.swing.JButton Buscar_Datos;
-    private javax.swing.JButton Buscar_Datos1;
+    private javax.swing.JButton Buscar_Datos_Autor;
     private javax.swing.JPanel Busqueda_Datos;
     private javax.swing.JButton Cerrar;
     private javax.swing.JComboBox<String> ComboBox;
