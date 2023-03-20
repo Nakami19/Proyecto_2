@@ -76,7 +76,6 @@ public class List<T> {
                 
                 if (pointer.getData().getTitle().equalsIgnoreCase (node.getData().getTitle())){
                     repetidos = true;
-
                     JOptionPane.showMessageDialog(null,"Error!! Resumen ya ingresado, por favor ingrese otro resumen ^_^ ");
                     return repetidos;
                 }
@@ -94,10 +93,11 @@ public class List<T> {
     }
     
     public void insertFinal_PalabraClave(PalabraClave data){
-        
+
         boolean repetidos = false;
         Nodo<PalabraClave> node = new Nodo<PalabraClave>(data);
         if (isEmpty()) {
+
             setFirst(node);
             setLast(node);
             size++;
@@ -105,14 +105,12 @@ public class List<T> {
             repetidos = false;
             Nodo<PalabraClave> pointer = getFirst();
             while (pointer != null) {
-                
                 if (pointer.getData().getPalabraclave().equalsIgnoreCase (node.getData().getPalabraclave())){
                     pointer.getData().getLista_resumen().insertFinal_Resumenes((Resumenes) node.getData().getLista_resumen().getFirst().getData());
                     repetidos = true;
                 }
                 
                 pointer = pointer.getNext();}
-            
             if (repetidos == false){
                 pointer=getLast();
                 pointer.setNext(node);
@@ -155,16 +153,14 @@ public class List<T> {
         
         Nodo<PalabraClave> aux = getFirst();
         Nodo<PalabraClave> nodo = null;
-            if (getSize() == 1){
-                nodo = aux;
-            }else{
+
             while (aux != null){
-                if(aux.getData().getPalabraclave().equalsIgnoreCase(PC)){
+                if(aux.getData().getPalabraclave().toLowerCase().equalsIgnoreCase(PC.toLowerCase())){
                     nodo = aux;
                 }
                 aux = aux.getNext();
-            }}
-        
+            }
+            
         return nodo;
     }
     

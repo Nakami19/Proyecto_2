@@ -473,7 +473,7 @@ public class Ventana extends javax.swing.JFrame {
                 for (int aux = 0; aux < clave.length; aux++){
                     List<Nodo<Resumenes>> lista = new List();
                     lista.insertFinal_Resumenes(resumen);
-                    PalabraClave objeto = new PalabraClave(clave[aux],lista); 
+                    PalabraClave objeto = new PalabraClave(clave[aux].replace(".", ""),lista); 
                     keytable.Insert_PC(keytable.Hash(clave[aux].toLowerCase().replace(".", "")), objeto);
                     }
                 
@@ -644,7 +644,7 @@ public class Ventana extends javax.swing.JFrame {
         model2.removeAllElements();
         try{
             HashTable keytable= Global.getKeytable();
-            Nodo <PalabraClave> nodo = keytable.SearchPalabraClave(keytable.Hash(palabraclave.getText().toLowerCase()), palabraclave.getText());
+            Nodo <PalabraClave> nodo = keytable.SearchPalabraClave(keytable.Hash(palabraclave.getText().toLowerCase().replace(".","")), palabraclave.getText());
             Nodo <Resumenes> aux = nodo.getData().getLista_resumen().getFirst();
             List<String> lista = new List();
 
