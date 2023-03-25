@@ -13,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -57,6 +59,7 @@ public class Ventana extends javax.swing.JFrame {
         Analizar = new javax.swing.JButton();
         BuscarAutor = new javax.swing.JButton();
         BuscarClave = new javax.swing.JButton();
+        PreCargar = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         main = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -115,7 +118,7 @@ public class Ventana extends javax.swing.JFrame {
                 LeerTXTActionPerformed(evt);
             }
         });
-        Pannel.add(LeerTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, -1));
+        Pannel.add(LeerTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 130, -1));
 
         Cerrar.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
         Cerrar.setText("CERRAR");
@@ -127,7 +130,7 @@ public class Ventana extends javax.swing.JFrame {
                 CerrarActionPerformed(evt);
             }
         });
-        Pannel.add(Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 130, -1));
+        Pannel.add(Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 130, -1));
 
         Analizar.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
         Analizar.setText("ANALIZAR");
@@ -137,7 +140,7 @@ public class Ventana extends javax.swing.JFrame {
                 AnalizarActionPerformed(evt);
             }
         });
-        Pannel.add(Analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
+        Pannel.add(Analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 130, -1));
 
         BuscarAutor.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
         BuscarAutor.setText("BUSCAR AUTOR");
@@ -147,7 +150,7 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarAutorActionPerformed(evt);
             }
         });
-        Pannel.add(BuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 130, -1));
+        Pannel.add(BuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 130, -1));
 
         BuscarClave.setFont(new java.awt.Font("Swis721 BT", 0, 10)); // NOI18N
         BuscarClave.setText("BUSCAR CLAVES");
@@ -157,7 +160,19 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarClaveActionPerformed(evt);
             }
         });
-        Pannel.add(BuscarClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 130, -1));
+        Pannel.add(BuscarClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 130, -1));
+
+        PreCargar.setFont(new java.awt.Font("Swis721 BT", 0, 12)); // NOI18N
+        PreCargar.setText("Precargar archivo");
+        PreCargar.setMaximumSize(new java.awt.Dimension(84, 22));
+        PreCargar.setMinimumSize(new java.awt.Dimension(84, 22));
+        PreCargar.setPreferredSize(new java.awt.Dimension(80, 25));
+        PreCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreCargarActionPerformed(evt);
+            }
+        });
+        Pannel.add(PreCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 130, -1));
 
         getContentPane().add(Pannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 540));
 
@@ -431,31 +446,27 @@ public class Ventana extends javax.swing.JFrame {
             List<Nodo<String>> listaTitulos= Global.getListaTitulos();
             HashTable keytable=Global.getKeytable();
             
-            String[] Info1=ResumenInfo.split("0_0");
+           
+            String[] Info1;
             String[] Info2;
             String[] Info3;
             String[] Info4;
-            String[] Info5;
-            for (int i = 0; i < Info1.length; i++) {
-                Info1[i]=Info1[i].trim();
-                Info2=Info1[i].split("Autores");
-               
             
-                Info2[0]=Info2[0].trim();
-                String titulo=Info2[0];
-                Info2[1]=Info2[1].trim();
-            
-                 Info3=Info2[1].split("Resumen");
-                Info3[0]=Info3[0].trim();
-                String autores=Info3[0];
-              
-                autores=autores.replace("-", " ");
+
+                Info1=ResumenInfo.split("Autores");
                 
-             Info4=Info3[1].trim().split("\n");
-            String contenido=Info4[0];
+                String titulo=Info1[0].trim();
+                Info1[1]=Info1[1].trim();
             
-             Info5=Info4[1].split(":");
-            String keywords=Info5[1].trim();
+                 Info2=Info1[1].split("Resumen");
+                Info2[0]=Info2[0].trim();
+                String autores=Info2[0];
+                
+             Info3=Info2[1].trim().split("\n");
+            String contenido=Info3[0];
+            
+             Info4=Info3[1].split(":");
+            String keywords=Info4[1].trim();
             
             String clave[];
             clave = new String [1];
@@ -484,7 +495,6 @@ public class Ventana extends javax.swing.JFrame {
             
            
           }
-            } 
 
             } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!!!"); }
             
@@ -555,40 +565,21 @@ public class Ventana extends javax.swing.JFrame {
         Nodo <Resumenes> aux = hashtable.getTable()[i].getFirst();
         
         while (aux!= null){
-           resumen+= aux.getData().guardar()+"\n"+"0_0"+"\n"; // ---> lo de aqui es un objeto de clase resumen, si lo que quieres son su datos entonces tienes que ponerle tipo getTitle(), get...
+           resumen+= aux.getData().guardar()+"\n"+"0_0"+"\n"; 
             aux = aux.getNext();
         }
         
     }
-            JOptionPane.showMessageDialog(null, "Escoja donde guardara los resumenes");
-          JFileChooser file = new JFileChooser();
-        
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(".TXT","txt");
-        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        file.setFileFilter(filter);
-        int selection=file.showOpenDialog(null); //en la interfaz se pone this
-        
-        if(selection==JFileChooser.APPROVE_OPTION){
-        
-            File archive=file.getSelectedFile();
-            String path=archive.getAbsolutePath();
-        if(!path.contains("txt")) {
-            JOptionPane.showMessageDialog(null, "Por favor elija un archivo del tipo txt");
-            }
-            else{
-        try {
-           PrintWriter pw=new PrintWriter(path); //para escribir, se pone la direccion de la carpeta\\nombre del archivo, si el archivo no existe lo crea
+            try {
+                Path path = Paths.get("ResumenesPrecargar");
+           PrintWriter pw=new PrintWriter(path.toAbsolutePath().toString()); 
            
-           pw.print(resumen);//mete todo de una en el txt borrando lo que habia anteriormente
+           pw.print(resumen);
            pw.close(); 
            JOptionPane.showMessageDialog(null, "Guardado exitoso");
        } catch(Exception e) {
            JOptionPane.showMessageDialog(null,"Error!!!");
        }
-        
-        }
-    
-    }
         System.exit(0);
     }//GEN-LAST:event_CerrarActionPerformed
 
@@ -683,6 +674,107 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_analisis_claveActionPerformed
 
+    private void PreCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreCargarActionPerformed
+
+       Resumenes resumen=null;
+       File archivo= null;
+        FileReader fr=null;
+        BufferedReader br = null;    
+            try{
+                
+                Path path = Paths.get("ResumenesPrecargar");
+                archivo = new File (path.toAbsolutePath().toString()); 
+                if (archivo.exists()) {
+
+                fr = new FileReader(archivo); 
+
+                br = new BufferedReader(fr); 
+                
+                String Resumen;
+                String ResumenInfo=""; 
+      
+        while ((Resumen=br.readLine())!=null) { 
+
+            if(!Resumen.isEmpty()&& !Resumen.isBlank()) {
+                ResumenInfo+=Resumen+"\n";
+                
+
+            }
+        }
+         fr.close();
+        br.close();
+        ResumenInfo=ResumenInfo.trim();
+       
+        if(!"".equals(ResumenInfo)) {
+            
+            HashTable hashtable=Global.getHashtable();
+
+            List<Nodo<String>> listaTitulos= Global.getListaTitulos();
+            HashTable keytable=Global.getKeytable();
+            
+            String[] Info1=ResumenInfo.split("0_0");
+            String[] Info2;
+            String[] Info3;
+            String[] Info4;
+            String[] Info5;
+            for (int i = 0; i < Info1.length; i++) {
+                Info1[i]=Info1[i].trim();
+                Info2=Info1[i].split("Autores");
+               
+            
+                Info2[0]=Info2[0].trim();
+                String titulo=Info2[0];
+                Info2[1]=Info2[1].trim();
+            
+                 Info3=Info2[1].split("Resumen");
+                Info3[0]=Info3[0].trim();
+                String autores=Info3[0];
+              
+                autores=autores.replace("-", " ");
+                
+             Info4=Info3[1].trim().split("\n");
+            String contenido=Info4[0];
+            
+             Info5=Info4[1].split(":");
+            String keywords=Info5[1].trim();
+            
+            String clave[];
+            clave = new String [1];
+            clave[0]=keywords;
+            clave = clave[0].split(", ");
+            
+            resumen=new Resumenes(titulo,autores,contenido,keywords);
+            
+            
+            boolean repetido=hashtable.Insert_Resumen(hashtable.Hash(resumen.getTitle()), resumen);
+            
+            if(repetido==false) {
+                listaTitulos.insertFinal_String(resumen.getTitle());
+                listaTitulos.Ordenar_Lista();
+            
+                for (int aux = 0; aux < clave.length; aux++){
+                    List<Nodo<Resumenes>> lista = new List();
+                    lista.insertFinal_Resumenes(resumen);
+                    PalabraClave objeto = new PalabraClave(clave[aux].replace(".", ""),lista); 
+                    keytable.Insert_PC(keytable.Hash(clave[aux].toLowerCase().replace(".", "")), objeto);
+                    }
+                
+                JOptionPane.showMessageDialog(null, "Resumen cargado con exito");
+                
+                }
+          }
+            } 
+        else {JOptionPane.showMessageDialog(null, "No hay resumenes guardados");}
+            }else {archivo.createNewFile();
+                JOptionPane.showMessageDialog(null, "El archivo no existe, se procedera a crearlo");
+                }
+
+            } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!!!"); }
+            
+   
+        
+    }//GEN-LAST:event_PreCargarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -734,6 +826,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JList<String> ListaResumenes;
     private javax.swing.JPanel Pannel;
     private javax.swing.JPanel Parent;
+    private javax.swing.JButton PreCargar;
     private javax.swing.JPanel Search_Author;
     private javax.swing.JPanel Search_Key;
     private javax.swing.JList<String> TitulosOrdenados;
