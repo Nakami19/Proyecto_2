@@ -397,7 +397,10 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-
+    /**
+     * Metodo donde se selecciona el txt que se desea cargar, para luego proceder a dividir el contenido en partes con el fin de meter cada elemento en su atributo de clase correspondiente y luego en el Hash Table
+     * @param evt 
+     */
     private void LeerTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeerTXTActionPerformed
         Parent.removeAll();
         Parent.add(main);
@@ -557,7 +560,12 @@ public class Ventana extends javax.swing.JFrame {
         Parent.repaint();
         Parent.revalidate();
     }//GEN-LAST:event_BuscarClaveActionPerformed
-
+    
+    
+    /**
+     * Metodo donde se procede a guardar los datos del programa en un archivo para luego finalizar el programa
+     * @param evt 
+     */
     private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
         HashTable hashtable=Global.getHashtable();
         String resumen="";
@@ -673,7 +681,10 @@ public class Ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error!!!");
         }
     }//GEN-LAST:event_analisis_claveActionPerformed
-
+    /**
+     * Metodo donde se lee un archivo que contiene los datos de la corrida anterior del programa
+     * @param evt 
+     */
     private void PreCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreCargarActionPerformed
 
        Resumenes resumen=null;

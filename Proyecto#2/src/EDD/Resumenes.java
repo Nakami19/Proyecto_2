@@ -95,6 +95,11 @@ public class Resumenes {
         return text.split(word).length -1;
     }
     
+    
+    /**
+     * Metodo que guarda en un String la informacion contenida en el resumen 
+     * @return String que contiene la informacion del resumen 
+     */
      public String guardar() {
    String resumen = "";       
         resumen += getTitle() + "\n"+"\n"
