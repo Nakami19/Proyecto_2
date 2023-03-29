@@ -76,8 +76,12 @@ public class Resumenes {
     public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
-    
-   public String print(){
+   
+    /**
+     * Método que retorna un string con todos los datos de un resúmen: titulo, autores, palabras clave y su frecuencia en el texto
+     * @return String de los datos
+     */
+    public String print(){
         String resumen = "";
         int i = 1;        
         resumen += getTitle() + "\n"
@@ -90,6 +94,12 @@ public class Resumenes {
         return resumen.trim();
     }
     
+   /**
+    * Método que devuelve la cantidad de veces que una palabra aparece en un texto
+    * @param word La palabra que se va a analizar
+    * @return El número que indica la cantidad de veces que la palabra aparece en el texto
+    */
+   
     public int wordAmmount(String word){
         String text = getContent().toLowerCase();
         return text.split(word).length -1;

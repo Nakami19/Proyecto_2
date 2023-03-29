@@ -57,12 +57,21 @@ public class List<T> {
         this.size = size;
     }
     
+    /**
+     * Método que confirma si la lista está vacía o no
+     * @return Booleano que indica si la lista está vacia o no
+     */
     public boolean isEmpty(){
         return getFirst() == null;
     }
     
-    public boolean insertFinal_Resumenes(Resumenes data){
-        
+    
+    /**
+     * Método que inserta un resumen a la lista de resúmenes, si es un resumen ya ingresado no lo introducirá
+     * @param data Objeto Resumen
+     * @return Booleano que indica si el resumen que se intenta insertar a existe en la lista o no
+     */
+    public boolean insertFinal_Resumenes(Resumenes data){        
         boolean repetidos = false;
         Nodo<Resumenes> node = new Nodo<Resumenes>(data);
         if (isEmpty()) {
@@ -92,6 +101,10 @@ public class List<T> {
         return repetidos;
     }
     
+    /**
+     * Método que inserta una palabra clave a la lista de palabras clave, si es una palabra clave ya ingresada no la introducirá
+     * @param data Objeto Palabra clave
+     */
     public void insertFinal_PalabraClave(PalabraClave data){
 
         boolean repetidos = false;
@@ -120,6 +133,10 @@ public class List<T> {
         }
     }
     
+    /**
+     * Método que inserta un String al final de una lista de Strings, si el String ya existe dentro de la lista, no se introducirá
+     * @param data String que se introducirá a la lista de Strings
+     */
     public void insertFinal_String(String data){
          boolean repetidos = false;
         Nodo<String> node = new Nodo<String>(data);
@@ -149,6 +166,11 @@ public class List<T> {
         }
     }
     
+    /**
+     * Método que va a Buscar una palabra clave a partir de un String dado 
+     * @param PC String de la palabra clave que se va a buscar
+     * @return Nodo Palabra clave que incluira el objeto palabra clave que se está buscando
+     */
     public Nodo<PalabraClave> searchPC(String PC){
         
         Nodo<PalabraClave> aux = getFirst();
@@ -164,6 +186,11 @@ public class List<T> {
         return nodo;
     }
     
+    /**
+     * Método que va a buscar un resumen a partir de su título
+     * @param titulo String que será el titulo del resumen
+     * @return Objeto Nodo Resumenes en donde estará contenido el resumen que se busca
+     */
     public Nodo<Resumenes> searchTitle(String titulo){
         
         Nodo<Resumenes> aux = getFirst();
@@ -181,6 +208,10 @@ public class List<T> {
         return nodo;
     }
     
+    
+    /**
+     * Método que ordenará la lista de Strings de forma alfabética
+     */
     public void Ordenar_Lista(){
         Nodo<String> aux = getFirst();
         Nodo<String> index;
@@ -203,6 +234,12 @@ public class List<T> {
         }
     }
     
+    /**
+     * Método que mostrará todos los resumenes de la lista de resumenes
+     * @param resumenes El Objeto Lista de nodos resumenes que contendrá todos los resumenes de la base de datos
+     * @param texto String Vacío en donde se va a concatenar los datos de los resumenes
+     * @return String con los datos de todos los resumenes de la lista
+     */
     public String showResumes(List<Nodo<Resumenes>> resumenes, String texto){
         for(Nodo<Resumenes> node = resumenes.getFirst(); node != null; node = node.getNext()){
             texto += node.getData().print();
