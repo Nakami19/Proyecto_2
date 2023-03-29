@@ -21,9 +21,14 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase es la interfaz gráfica
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 29/03/2023
+
+ */  
 public class Ventana extends javax.swing.JFrame {
 
     DefaultListModel model1 =new DefaultListModel();
@@ -502,9 +507,13 @@ public class Ventana extends javax.swing.JFrame {
             } catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!!!"); }
             
             }
-        }
+        } 
     }//GEN-LAST:event_LeerTXTActionPerformed
 
+    /**
+     * Método en donde te direcciona al Panel de Búsqueda Por Autor en la interfaz gráfica en donde se almacenan los autores en el ComboBox
+     * @param evt 
+     */
     private void BuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarAutorActionPerformed
         Parent.removeAll();
         Parent.add(Search_Author);
@@ -539,6 +548,10 @@ public class Ventana extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BuscarAutorActionPerformed
 
+    /**
+     * Método en donde te direcciona al Panel de Analizar Resumen en la interfaz gráfica en donde se almacenan los titulos en un Jlist
+     * @param evt 
+     */
     private void AnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarActionPerformed
         model1.removeAllElements();
         Parent.removeAll();
@@ -554,6 +567,10 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AnalizarActionPerformed
 
+    /**
+     * Método en donde te direcciona al Panel de Analisis de Resumen por Palabra Clave en la interfaz gráfica
+     * @param evt 
+     */
     private void BuscarClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClaveActionPerformed
         Parent.removeAll();
         Parent.add(Search_Key);
@@ -591,6 +608,10 @@ public class Ventana extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_CerrarActionPerformed
 
+    /**
+     * Metodo donde muestra ordenadamente los titulos de los resumenes para seleccionar de la Jlist y analizar posteriormente 
+     * @param evt 
+     */
     private void Buscar_DatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_DatosActionPerformed
 
         String titulo = TitulosOrdenados.getSelectedValue();
@@ -607,6 +628,10 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Buscar_DatosActionPerformed
 
+    /**
+     * Metodo donde ya seleccionado un resumen de un autor, lo direcciona a otro Frame en donde se le mostrara las estadisticas de ese resumen
+     * @param evt 
+     */
     private void Buscar_Datos_AutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Datos_AutorActionPerformed
         String titulo = AutoresOrdenados.getSelectedValue();
         HashTable hashtable=Global.getHashtable();
@@ -621,7 +646,10 @@ public class Ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error!!!");
         }
     }//GEN-LAST:event_Buscar_Datos_AutorActionPerformed
-
+    /**
+     * Metodo donde relaciona el comboBox con el Jlist con relacion a Títulos y Autores
+     * @param evt 
+     */
     private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
         model3.removeAllElements();
         if(ComboBox.getSelectedItem() != null){
@@ -641,6 +669,10 @@ public class Ventana extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_ComboBoxActionPerformed
 
+    /**
+     * Metodo donde se Busca los resumenes de acuerdo a la palabra clave ingresada
+     * @param evt 
+     */
     private void ingreso_claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingreso_claveActionPerformed
         model2.removeAllElements();
         try{
@@ -667,6 +699,10 @@ public class Ventana extends javax.swing.JFrame {
         palabraclave.setText("");
     }//GEN-LAST:event_ingreso_claveActionPerformed
 
+    /**
+     * Metodo donde analiza el resumen seleccionado de la clase resumenes
+     * @param evt 
+     */
     private void analisis_claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analisis_claveActionPerformed
         String titulo = ListaResumenes.getSelectedValue();
         HashTable hashtable=Global.getHashtable();

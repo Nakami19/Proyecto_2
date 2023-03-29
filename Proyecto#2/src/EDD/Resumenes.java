@@ -5,21 +5,29 @@
 package EDD;
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase es de objetos de tipo Resumenes
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 29/03/2023
+
+ */  
 public class Resumenes {
+    //Campos de la clase 
     private String title;
     private String authors;
     private String content;
     private String keywords;
 
+    // Constructor para Objetos de tipo Resumenes
+    
     public Resumenes(String title, String authors, String content, String keywords) {
         this.title = title;
         this.authors = authors;
         this.content = content;
         this.keywords = keywords;
-    }
+    } //Cierre del constructor
 
     /**
      * @return the title
@@ -110,8 +118,8 @@ public class Resumenes {
      * Metodo que guarda en un String la informacion contenida en el resumen 
      * @return String que contiene la informacion del resumen 
      */
-     public String guardar() {
-   String resumen = "";       
+    public String guardar() {
+    String resumen = "";       
         resumen += getTitle() + "\n"+"\n"
                 + "Autores "+"\n" + getAuthors() +"\n"+ "\n"+"Resumen"+"\n"+getContent()+"\n"+"\n"+"Palabra clave:"+getKeywords();
         return resumen.trim();

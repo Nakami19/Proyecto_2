@@ -5,17 +5,26 @@
 package EDD;
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase son los nodos de tipo T
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 29/03/2023
+
+ */  
 public class Nodo<T>{
+    //Campos de la clase 
     private T data;
     private Nodo<T> next;
     
+
+    // Constructor para Nodos de tipo T   
+  
     public Nodo(T data){
         this.data = data;
         this.next = null;
-    }
+    } //Cierre del constructor
 
     /**
      * @return the data

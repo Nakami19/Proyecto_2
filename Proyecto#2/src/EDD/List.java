@@ -7,19 +7,27 @@ package EDD;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase es la estructuras de datos de una lista simplemenete enlazada
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 29/03/2023
+
+ */  
 public class List<T> {
+    //Campos de la clase 
     private Nodo first;
     private Nodo last;
     private int size;
     
+    // Constructor para la creacion de listas simplemente enlazadas
+   
     public List(){
         this.first = null;
         this.last = null;
         this.size = 0;
-    }
+    } //Cierre del constructor
 
     /**
      * @return the head
@@ -28,10 +36,16 @@ public class List<T> {
         return first;
     }
 
+    /**
+     * @return the last
+     */
     public Nodo getLast() {
         return last;
     }
 
+    /**
+     * @param last the last to set
+     */
     public void setLast(Nodo last) {
         this.last = last;
     }
@@ -63,7 +77,7 @@ public class List<T> {
      */
     public boolean isEmpty(){
         return getFirst() == null;
-    }
+    } //Cierre metodo
     
     
     /**
@@ -99,7 +113,7 @@ public class List<T> {
             } 
         }
         return repetidos;
-    }
+    } //Cierre metodo
     
     /**
      * Método que inserta una palabra clave a la lista de palabras clave, si es una palabra clave ya ingresada no la introducirá
@@ -131,7 +145,7 @@ public class List<T> {
                 size++;
             } 
         }
-    }
+    } //Cierre metodo
     
     /**
      * Método que inserta un String al final de una lista de Strings, si el String ya existe dentro de la lista, no se introducirá
@@ -164,7 +178,7 @@ public class List<T> {
                 size++;
             } 
         }
-    }
+    } //Cierre metodo
     
     /**
      * Método que va a Buscar una palabra clave a partir de un String dado 
@@ -184,7 +198,7 @@ public class List<T> {
             }
             
         return nodo;
-    }
+    } //Cierre metodo
     
     /**
      * Método que va a buscar un resumen a partir de su título
@@ -206,7 +220,7 @@ public class List<T> {
             }}
         
         return nodo;
-    }
+    } //Cierre metodo
     
     
     /**
@@ -232,19 +246,7 @@ public class List<T> {
                 aux = aux.getNext();
             }
         }
-    }
+    } //Cierre metodo
     
-    /**
-     * Método que mostrará todos los resumenes de la lista de resumenes
-     * @param resumenes El Objeto Lista de nodos resumenes que contendrá todos los resumenes de la base de datos
-     * @param texto String Vacío en donde se va a concatenar los datos de los resumenes
-     * @return String con los datos de todos los resumenes de la lista
-     */
-    public String showResumes(List<Nodo<Resumenes>> resumenes, String texto){
-        for(Nodo<Resumenes> node = resumenes.getFirst(); node != null; node = node.getNext()){
-            texto += node.getData().print();
-            texto += "\n";
-        }
-        return texto;
-    }
+
 }

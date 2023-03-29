@@ -8,9 +8,14 @@ import EDD.List;
 import EDD.Nodo;
 
 /**
- *
- * @author kevin
- */
+
+ * Esta clase es la clase clase en donde se almacenan las variables globales de edd
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 29/03/2023
+
+ */  
 public class Global {
     //Parámetros de la clase Global
     private static HashTable hashtable = new HashTable(16);
