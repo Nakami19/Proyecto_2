@@ -4,10 +4,7 @@
  */
 package Main;
 
-import EDD.HashTable;
-import EDD.List;
-import EDD.Nodo;
-import EDD.Resumenes;
+
 import Interfaces.Ventana;
 
 /**

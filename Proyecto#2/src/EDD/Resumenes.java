@@ -90,8 +90,7 @@ public class Resumenes {
      * @return String de los datos
      */
     public String print(){
-        String resumen = "";
-        int i = 1;        
+        String resumen = "";        
         resumen += getTitle() + "\n"
                 + "Autores: " +"\n"+ getAuthors() + "\n";
         
