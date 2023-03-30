@@ -96,8 +96,10 @@ public class Resumenes {
                 + "Autores: " +"\n"+ getAuthors() + "\n";
         
         String[] words = getKeywords().toLowerCase().split(",");
+        int counter=1;
         for(int index = 0; index < words.length; index++){
-            resumen += "Palabra clave: " + words[index] + ", " + " Frecuencia en el texto: "+ Integer.toString(wordAmmount(words[index])) + "\n"; 
+            resumen += "Palabra clave "+counter+": " + words[index] + ", " + " Frecuencia en el texto: "+ Integer.toString(wordAmmount(words[index])) + "\n"; 
+            counter++;
         }
         return resumen.trim();
     }
